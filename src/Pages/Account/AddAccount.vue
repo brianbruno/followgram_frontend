@@ -52,6 +52,7 @@
                                 <router-link :to="{ path:  '/home'}">
                                     <b-button class="2 mb-2 btn-hover-shine btn-transition float-right" variant="success" :disabled="doingRequest">Começar!</b-button>
                                 </router-link>
+                                <b-button class="2 mb-2 btn-hover-shine btn-transition text-white float-right" variant="warning" :disabled="doingRequest" v-on:click="reiniciarProcesso">Cadastrar nova conta</b-button>
                             </div>
                         </div>
                     </div>
@@ -161,6 +162,11 @@
                     }).show();
                     self.doingRequest = false;
                 });
+            },
+            reiniciarProcesso() {
+                this.fase = 1;
+                this.confirmKey = '';
+                this.usernameInsta = '';
             },
             voltarFase1() {
                 const self = this;

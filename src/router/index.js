@@ -50,6 +50,12 @@ export default new Router({
             component: () => import('../Pages/Account/AddAccount.vue'),
         },
         {
+            path: '/promoverconta',
+            name: 'promover-conta',
+            beforeEnter: isLoggedIn,
+            component: () => import('../Pages/Account/PromoteAccount.vue'),
+        },
+        {
             path: '/pages/register-boxed',
             name: 'register-boxed',
             meta: {layout: 'userpages'},
