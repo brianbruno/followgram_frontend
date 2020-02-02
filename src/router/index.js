@@ -3,6 +3,22 @@ import Router from 'vue-router'
 
 Vue.use(Router);
 
+const isLoggedIn = (to, from, next) => {
+    if (!localStorage.getItem('access_token')) {
+        next('/');
+    } else {
+        next();
+    }
+};
+
+const isLoggedInBlock = (to, from, next) => {
+    if (localStorage.getItem('access_token')) {
+        next('/home');
+    } else {
+        next();
+    }
+};
+
 export default new Router({
     scrollBehavior() {
         return window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -14,6 +30,7 @@ export default new Router({
         {
             path: '/home',
             name: 'analytics',
+            beforeEnter: isLoggedIn,
             component: () => import('../DemoPages/Dashboards/Analytics.vue'),
         },
 
@@ -23,18 +40,21 @@ export default new Router({
             path: '/',
             name: 'login-boxed',
             meta: {layout: 'userpages'},
+            beforeEnter: isLoggedInBlock,
             component: () => import('../DemoPages/UserPages/LoginBoxed.vue'),
         },
         {
             path: '/pages/register-boxed',
             name: 'register-boxed',
             meta: {layout: 'userpages'},
+            beforeEnter: isLoggedInBlock,
             component: () => import('../DemoPages/UserPages/RegisterBoxed.vue'),
         },
         {
             path: '/pages/forgot-password-boxed',
             name: 'forgot-password-boxed',
             meta: {layout: 'userpages'},
+            beforeEnter: isLoggedInBlock,
             component: () => import('../DemoPages/UserPages/ForgotPasswordBoxed.vue'),
         },
 
