@@ -34,7 +34,7 @@
                 sidebarActive: false,
 
                 menu: [
-                    
+
                     {
                         title: 'Início',
                         icon: 'pe-7s-home',
@@ -125,7 +125,7 @@
                             },
                         ],
                     },
-                    
+
                     {
                         header: true,
                         title: 'Configurações',
@@ -133,7 +133,7 @@
                     {
                         icon: 'pe-7s-add-user',
                         title: 'Adicionar Conta',
-                        href: '/widgets/chart-boxes-3',
+                        href: '/adicionarconta',
                     },
 
                     {
