@@ -9,9 +9,9 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <div class="h5 modal-title">
-                                    Forgot your Password?
+                                    Esqueceu sua senha?
                                     <h6 class="mt-1 mb-0 opacity-8">
-                                        <span>Use the form below to recover it.</span>
+                                        <span>Use seu email para recuperá-la.</span>
                                     </h6>
                                 </div>
                             </div>
@@ -23,7 +23,7 @@
                                                 <b-form-group>
                                                     <Label for="exampleEmail">Email</Label>
                                                     <b-form-input type="email" name="email" id="exampleEmail"
-                                                                  placeholder="Email here..."/>
+                                                                  placeholder="Email..."/>
                                                 </b-form-group>
                                             </b-col>
                                         </b-row>
@@ -31,12 +31,13 @@
                                 </div>
                                 <div class="divider"/>
                                 <h6 class="mb-0">
-                                    <a href="javascript:void(0);" class="text-primary">Sign in existing account</a>
+                                    <router-link :to="{ path: '/'}">
+                                    <a class="text-primary">Entrar com uma conta existente</a></router-link>
                                 </h6>
                             </div>
                             <div class="modal-footer clearfix">
                                 <div class="float-right">
-                                    <b-button variant="primary" size="lg">Recover Password</b-button>
+                                    <b-button variant="primary" size="lg">Enviar</b-button>
                                 </div>
                             </div>
                         </div>

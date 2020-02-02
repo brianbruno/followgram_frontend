@@ -2,9 +2,7 @@
     <div class="app-header header-shadow">
         <div class="logo-src"/>
         <div class="app-header__content">
-            <div class="app-header-left">
-                <SearchBox/>
-            </div>
+            
             <div class="app-header-right">
                 <UserArea/>
             </div>

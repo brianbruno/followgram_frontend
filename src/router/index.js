@@ -12,7 +12,7 @@ export default new Router({
         // Dashboards
 
         {
-            path: '/',
+            path: '/home',
             name: 'analytics',
             component: () => import('../DemoPages/Dashboards/Analytics.vue'),
         },
@@ -20,7 +20,7 @@ export default new Router({
         // Pages
 
         {
-            path: '/pages/login-boxed',
+            path: '/',
             name: 'login-boxed',
             meta: {layout: 'userpages'},
             component: () => import('../DemoPages/UserPages/LoginBoxed.vue'),

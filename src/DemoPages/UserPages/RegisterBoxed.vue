@@ -10,18 +10,18 @@
                             <div class="modal-body">
                                 <h5 class="modal-title">
                                     <h4 class="mt-2">
-                                        <div>Welcome,</div>
-                                        <span>It only takes a <span class="text-success">few seconds</span> to create your account</span>
+                                        <div>Bem-Vindo,</div>
+                                        <span>Crie agora sua conta e comece a ganhar seguidores:</span>
                                     </h4>
                                 </h5>
                                 <div class="divider"/>
                                 <b-form-group id="exampleInputGroup1"
                                               label-for="exampleInput1"
-                                              description="We'll never share your email with anyone else.">
+                                              description=" ">
                                     <b-form-input id="exampleInput1"
                                                   type="email"
                                                   required
-                                                  placeholder="Enter email...">
+                                                  placeholder="Email...">
                                     </b-form-input>
                                 </b-form-group>
                                 <b-form-group id="exampleInputGroup12"
@@ -29,7 +29,7 @@
                                     <b-form-input id="exampleInput12"
                                                   type="text"
                                                   required
-                                                  placeholder="Enter username...">
+                                                  placeholder="Nome de  usuário...">
                                     </b-form-input>
                                 </b-form-group>
                                 <div class="row">
@@ -39,7 +39,7 @@
                                             <b-form-input id="exampleInput2"
                                                           type="password"
                                                           required
-                                                          placeholder="Enter password...">
+                                                          placeholder="Senha...">
                                             </b-form-input>
                                         </b-form-group>
                                     </div>
@@ -49,27 +49,29 @@
                                             <b-form-input id="exampleInput2"
                                                           type="password"
                                                           required
-                                                          placeholder="Repeat password...">
+                                                          placeholder="Repita sua senha...">
                                             </b-form-input>
                                         </b-form-group>
                                     </div>
                                 </div>
                                 <b-form-checkbox name="check" id="exampleCheck">
-                                    Accept our <a href="javascript:void(0);">Terms and Conditions</a>.
+                                    Aceito os <a href="javascript:void(0);">Termos e Condições</a>.
                                 </b-form-checkbox>
                                 <div class="divider"/>
                                 <h6 class="mb-0">
-                                    Already have an account?
-                                    <a href="javascript:void(0);" class="text-primary">Sign in</a>
-                                    |
-                                    <a href="javascript:void(0);" class="text-primary">Recover
-                                        Password</a>
+                                    Já possui uma conta?
+                                    <router-link :to="{ path:  '/'}">
+                                    <span href="javascript:void(0);" class="text-primary">Login</span></router-link>
+                                    <a>  |</a>
+                                    <router-link :to="{ path:  '/pages/forgot-password-boxed'}">
+                                    <span class="text-primary"> Esqueci a senha </span></router-link>
                                 </h6>
                             </div>
                             <div class="modal-footer d-block text-center">
+                                <router-link :to="{ path:  '/home'}">
                                 <b-button color="primary" class="btn-wide btn-pill btn-shadow btn-hover-shine"
-                                          size="lg">Create Account
-                                </b-button>
+                                          size="lg">Criar conta
+                                </b-button></router-link>
                             </div>
                         </div>
                     </div>

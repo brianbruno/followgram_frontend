@@ -34,45 +34,19 @@
                 sidebarActive: false,
 
                 menu: [
+                    
                     {
-                        header: true,
-                        title: 'Main Navigation',
-                    },
-                    {
-                        title: 'Dashboards',
-                        icon: 'pe-7s-rocket',
-                        child: [
-                            {
-                                href: '/',
-                                title: 'Analytics',
-                            },
-                        ]
-                    },
-                    {
-                        title: 'Pages',
-                        icon: 'pe-7s-browser',
-                        child: [
-                            {
-                                href: '/pages/login-boxed',
-                                title: 'Login Boxed',
-                            },
-                            {
-                                href: '/pages/register-boxed',
-                                title: 'Register Boxed',
-                            },
-                            {
-                                href: '/pages/forgot-password-boxed',
-                                title: 'Forgot Password Boxed',
-                            },
-                        ]
+                        title: 'Início',
+                        icon: 'pe-7s-home',
+                        href: '/home'
                     },
                     {
                         header: true,
-                        title: 'UI Components',
+                        title: 'Gerenciar',
                     },
                     {
                         icon: 'pe-7s-diamond',
-                        title: 'Elements',
+                        title: 'Ganhar Pontos',
                         child: [
                             {
                                 title: 'Buttons',
@@ -114,8 +88,8 @@
                         ],
                     },
                     {
-                        icon: 'pe-7s-car',
-                        title: 'Components',
+                        icon: 'pe-7s-graph1',
+                        title: 'Promover Conta',
                         child: [
                             {
                                 title: 'Tabs',
@@ -151,32 +125,20 @@
                             },
                         ],
                     },
-                    {
-                        icon: 'pe-7s-display2',
-                        title: 'Tables',
-                        child: [
-                            {
-                                title: 'Regular Tables',
-                                href: '/tables/regular-tables',
-                            },
-                        ]
-                    },
+                    
                     {
                         header: true,
-                        title: 'Dashboard Boxes',
+                        title: 'Configurações',
                     },
                     {
-                        icon: 'pe-7s-graph2',
-                        title: 'Chart Boxes',
+                        icon: 'pe-7s-add-user',
+                        title: 'Adicionar Conta',
                         href: '/widgets/chart-boxes-3',
                     },
-                    {
-                        header: true,
-                        title: 'Forms',
-                    },
+
                     {
                         icon: 'pe-7s-light',
-                        title: 'Elements',
+                        title: 'Gerenciar Contas',
                         child: [
                             {
                                 title: 'Controls',
@@ -187,15 +149,6 @@
                                 href: '/forms/layouts',
                             },
                         ],
-                    },
-                    {
-                        header: true,
-                        title: 'Charts',
-                    },
-                    {
-                        icon: 'pe-7s-graph2',
-                        title: 'ChartJS',
-                        href: '/charts/chartjs',
                     },
                 ],
                 collapsed: true,

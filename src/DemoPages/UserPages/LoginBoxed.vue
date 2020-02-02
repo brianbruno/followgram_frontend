@@ -10,17 +10,17 @@
                             <div class="modal-body">
                                 <div class="h5 modal-title text-center">
                                     <h4 class="mt-2">
-                                        <div>Welcome back,</div>
-                                        <span>Please sign in to your account below.</span>
+                                        <div>Bem-Vindo</div>
+                                        <span>Faça seu login para continuar.</span>
                                     </h4>
                                 </div>
                                 <b-form-group id="exampleInputGroup1"
                                               label-for="exampleInput1"
-                                              description="We'll never share your email with anyone else.">
+                                              description=" ">
                                     <b-form-input id="exampleInput1"
                                                   type="email"
                                                   required
-                                                  placeholder="Enter email...">
+                                                  placeholder="Email...">
                                     </b-form-input>
                                 </b-form-group>
                                 <b-form-group id="exampleInputGroup2"
@@ -28,25 +28,28 @@
                                     <b-form-input id="exampleInput2"
                                                   type="password"
                                                   required
-                                                  placeholder="Enter password...">
+                                                  placeholder="Senha...">
                                     </b-form-input>
                                 </b-form-group>
                                 <b-form-checkbox name="check" id="exampleCheck">
-                                    Keep me logged in
+                                    Manter-me logado
                                 </b-form-checkbox>
                                 <div class="divider"/>
                                 <h6 class="mb-0">
-                                    No account?
-                                    <a href="javascript:void(0);" class="text-primary">Sign up now</a>
+                                    Não possui uma conta?
+                                    <router-link :to="{ path:  '/pages/register-boxed'}">
+                                    <span class="text-primary">Registre-se agora</span>
+                                    </router-link>
                                 </h6>
                             </div>
                             <div class="modal-footer clearfix">
                                 <div class="float-left">
-                                    <a href="javascript:void(0);" class="btn-lg btn btn-link">Recover
-                                        Password</a>
+                                    <router-link :to="{ path:  '/pages/forgot-password-boxed'}">
+                                    <a  class="btn-lg btn btn-link">Esqueci a senha</a></router-link>
                                 </div>
                                 <div class="float-right">
-                                    <b-button variant="primary" size="lg">Login to Dashboard</b-button>
+                                    <router-link :to="{ path:  '/home'}">
+                                    <b-button variant="primary" size="lg">Login</b-button></router-link>
                                 </div>
                             </div>
                         </div>
@@ -59,3 +62,9 @@
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    
+}
+</script>
