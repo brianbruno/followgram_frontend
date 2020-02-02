@@ -176,7 +176,7 @@
                     })
                         .then(function (response) {
                             window.localStorage.setItem('access_token', response.data.token_type + ' ' + response.data.access_token);
-                            self.$router.push('/home');
+                            self.userInfo()
                         })
                         .catch(function () {
                             new Noty({
@@ -196,7 +196,37 @@
                         type: 'error',
                     }).show();
                 }
+            },
+            userInfo: function () {
+                // user.name
+                let config = {
+                    headers: {
+                        Authorization: window.localStorage.getItem('access_token'),
+                    }
+                };
+
+                axios.post('https://insta.brian.place/api/auth/user', {}, config)
+                    .then(function (response) {
+                        window.localStorage.setItem('user.id', response.data.id);
+                        window.localStorage.setItem('user.name', response.data.name);
+                        window.localStorage.setItem('user.new_followers', response.data.new_followers);
+                        window.localStorage.setItem('user.new_comments', response.data.new_comments);
+                        window.localStorage.setItem('user.new_likes', response.data.new_likes);
+                        window.localStorage.setItem('user.points', response.data.points);
+                        window.localStorage.setItem('user.pending_points', response.data.pending_points);
+                        self.$router.push('/home');
+                    })
+                    .catch(function () {
+                        new Noty({
+                            theme: 'mint',
+                            text: 'Usuário ou senha inválidos',
+                            timeout: 2500,
+                            layout: 'topRight',
+                            type: 'error',
+                        }).show();
+                    });
             }
+
         }
 
     }

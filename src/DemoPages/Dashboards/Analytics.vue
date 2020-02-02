@@ -1,6 +1,6 @@
 <template>
     <div>
-        
+
         <div class="mb-3 card">
             <div class="card-header-tab card-header">
                 <div class="card-header-title font-size-lg text-capitalize font-weight-normal">
@@ -15,7 +15,7 @@
                             <i class="pe-7s-users text-white opacity-8"></i></div>
                         <div class="widget-chart-content">
                             <div class="widget-subheading">Novos Seguidores</div>
-                            <div class="widget-numbers">+122</div>
+                            <div class="widget-numbers">+{{new_followers}}</div>
                         </div>
                     </div>
                     <div class="divider m-0 d-md-none d-sm-block"></div>
@@ -27,7 +27,7 @@
                             <i class="pe-7s-speaker text-white"></i></div>
                         <div class="widget-chart-content">
                             <div class="widget-subheading">Novos comentários</div>
-                            <div class="widget-numbers"><span>+21</span></div>
+                            <div class="widget-numbers"><span>+{{new_comments}}</span></div>
                             <div class="widget-description opacity-8 text-focus">
                             </div>
                         </div>
@@ -41,7 +41,7 @@
                             <i class="pe-7s-like text-white"></i></div>
                         <div class="widget-chart-content">
                             <div class="widget-subheading">Novos likes</div>
-                            <div class="widget-numbers"><span>+55</span></div>
+                            <div class="widget-numbers"><span>+{{new_likes}}</span></div>
                             <div class="widget-description text-focus">
 
                             </div>
@@ -182,9 +182,18 @@
             heading: 'Analytics Dashboard',
             subheading: 'This is an example dashboard created using build-in elements and components.',
             icon: 'pe-7s-plane icon-gradient bg-tempting-azure',
+            new_followers: 0,
+            new_comments: 0,
+            new_likes: 0,
         }),
+        created: function () {
+            this.new_followers = localStorage.getItem('user.new_followers');
+            this.new_comments = localStorage.getItem('user.new_comments');
+            this.new_likes = localStorage.getItem('user.new_likes');
+        },
+        methods: {
 
-        methods: {},
+        },
 
     }
 </script>
