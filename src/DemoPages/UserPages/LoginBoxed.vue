@@ -50,7 +50,7 @@
                                     <a  class="btn-lg btn btn-link">Esqueci a senha</a></router-link>
                                 </div>
                                 <div class="float-right">
-                                    <b-button variant="primary" size="lg" v-on:click="login">Login</b-button></router-link>
+                                    <b-button variant="primary" size="lg" v-on:click="login">Login</b-button>
                                 </div>
                             </div>
                         </div>
@@ -108,9 +108,6 @@
                     type: 'error',
                 }).show();
             }
-
-
-
         }
     }
 
