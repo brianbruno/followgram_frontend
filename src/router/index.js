@@ -44,6 +44,12 @@ export default new Router({
             component: () => import('../DemoPages/UserPages/LoginBoxed.vue'),
         },
         {
+            path: '/adicionarconta',
+            name: 'adicionar-conta',
+            beforeEnter: isLoggedIn,
+            component: () => import('../Pages/Account/AddAccount.vue'),
+        },
+        {
             path: '/pages/register-boxed',
             name: 'register-boxed',
             meta: {layout: 'userpages'},
