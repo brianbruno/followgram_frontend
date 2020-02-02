@@ -83,3 +83,37 @@
         </div>
     </div>
 </template>
+
+<script>
+    const axios = require('axios');
+
+    export default {
+        data: function () {
+            return {
+                email: '',
+                password: '',
+                remember_me: ''
+            }
+        },
+        methods: {
+            register: function () {
+                const self = this;
+
+                axios.post('https://insta.brian.place/api/auth/login', {
+                    email: self.email,
+                    password: self.password,
+                    remember_me: self.remember_me
+                })
+                    .then(function (response) {
+                        window.localStorage.setItem('access_token', response.data.token_type + ' ' + response.data.access_token);
+                        self.$router.push('/home');
+                    })
+                    .catch(function (error) {
+                        console.log(error);
+                    });
+
+            }
+        }
+
+    }
+</script>
