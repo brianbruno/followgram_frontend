@@ -128,9 +128,22 @@
                         idInstaTarget: idInstaTarget,
                         type: 'follow',
                         points: self.points[idInstaTarget],
-                        activate: active }, config).then(function () {
-                    self.doingRequest = false;
-                    self.buscarContas();
+                        activate: active }, config).then(function (response) {
+
+                            if (response.data.success) {
+                                self.doingRequest = false;
+                                self.buscarContas();
+                            } else {
+                                new Noty({
+                                    theme: 'mint',
+                                    text: response.data.message,
+                                    timeout: 2500,
+                                    layout: 'topRight',
+                                    type: 'error',
+                                }).show();
+                                self.doingRequest = false;
+                            }
+
                 }).catch(function (error) {
                     new Noty({
                         theme: 'mint',

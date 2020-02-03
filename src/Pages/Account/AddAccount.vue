@@ -104,10 +104,10 @@
                         self.confirmKey = response.data.confirmKey;
                         self.fase = 2;
                         self.doingRequest = false;
-                    }).catch(function () {
+                    }).catch(function (error) {
                         new Noty({
                             theme: 'mint',
-                            text: 'Usuário ou senha inválidos',
+                            text: error.message,
                             timeout: 2500,
                             layout: 'topRight',
                             type: 'error',
@@ -145,7 +145,7 @@
                     } else {
                         new Noty({
                             theme: 'mint',
-                            text: 'Ainda não conseguimos verificar sua conta! Confirme o código e tente novamente.',
+                            text: response.data.message,
                             timeout: 2500,
                             layout: 'topRight',
                             type: 'error',
@@ -153,10 +153,10 @@
                     }
 
                     self.doingRequest = false;
-                }).catch(function () {
+                }).catch(function (error) {
                     new Noty({
                         theme: 'mint',
-                        text: 'Usuário ou senha inválidos',
+                        text: error.message,
                         timeout: 2500,
                         layout: 'topRight',
                         type: 'error',

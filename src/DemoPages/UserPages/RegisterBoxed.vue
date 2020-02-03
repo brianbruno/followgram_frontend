@@ -198,6 +198,7 @@
                 }
             },
             userInfo: function () {
+                const self = this;
                 // user.name
                 let config = {
                     headers: {
@@ -216,10 +217,10 @@
                         window.localStorage.setItem('user.pending_points', response.data.pending_points);
                         self.$router.push('/home');
                     })
-                    .catch(function () {
+                    .catch(function (error) {
                         new Noty({
                             theme: 'mint',
-                            text: 'Usuário ou senha inválidos',
+                            text: error.message,
                             timeout: 2500,
                             layout: 'topRight',
                             type: 'error',

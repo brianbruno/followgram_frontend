@@ -85,9 +85,12 @@
 
             const self = this;
 
-            setInterval(function () {
-                self.updatePoints();
-            }, 10000);
+            if (localStorage.getItem('access_token')) {
+                setInterval(function () {
+                    self.updatePoints();
+                }, 10000);
+            }
+
 
         },
         methods: {
@@ -112,8 +115,16 @@
                         window.localStorage.removeItem('user.pending_points');
                         self.$router.push('/');
                     })
-                    .catch(function (error) {
-                        console.log(error)
+                    .catch(function () {
+                        window.localStorage.removeItem('access_token');
+                        window.localStorage.removeItem('user.id');
+                        window.localStorage.removeItem('user.name');
+                        window.localStorage.removeItem('user.new_followers');
+                        window.localStorage.removeItem('user.new_comments');
+                        window.localStorage.removeItem('user.new_likes');
+                        window.localStorage.removeItem('user.points');
+                        window.localStorage.removeItem('user.pending_points');
+                        self.$router.push('/');
                     });
             },
             updatePoints() {
