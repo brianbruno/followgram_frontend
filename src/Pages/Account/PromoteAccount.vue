@@ -86,10 +86,12 @@
                     const accounts = response.data.data;
                     self.accounts = [];
                     accounts.forEach(function (account) {
-                        if (account.instagram_requests) {
+                        if (account.instagram_requests[0]) {
                             if (account.instagram_requests[0].type === 'follow') {
                                 self.points[account.id] = account.instagram_requests[0].points;
                             }
+                        } else {
+                            self.points[account.id] = "15";
                         }
 
                         self.accounts.push(account)
