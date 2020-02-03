@@ -82,6 +82,13 @@
             this.name = localStorage.getItem('user.name');
             this.points = localStorage.getItem('user.points');
             this.pending_points = localStorage.getItem('user.pending_points');
+
+            const self = this;
+
+            setInterval(function () {
+                self.updatePoints();
+            }, 10000);
+
         },
         methods: {
             logout() {
@@ -107,6 +114,23 @@
                     })
                     .catch(function (error) {
                         console.log(error)
+                    });
+            },
+            updatePoints() {
+                const self = this;
+                // user.name
+                let config = {
+                    headers: {
+                        Authorization: window.localStorage.getItem('access_token'),
+                    }
+                };
+
+                axios.post('https://insta.brian.place/api/auth/user', {}, config)
+                    .then(function (response) {
+                        window.localStorage.setItem('user.points', response.data.points);
+                        window.localStorage.setItem('user.pending_points', response.data.pending_points);
+                        self.points = response.data.points;
+                        self.pending_points = response.data.pending_points;
                     });
             }
         }
