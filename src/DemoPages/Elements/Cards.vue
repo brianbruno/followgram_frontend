@@ -21,7 +21,7 @@
                     <h5 class="frase1">1- Acesse o perfil com @instagram.</h5>
                     <h5 class="frase2">2- Clique em <i class="pe-7s-like"></i>.</h5>
                     <div class="botoes">
-                      <button v-on:click="voltar" class="mr-2 btn btn-success">Voltar</button>
+                      <button v-on:click="voltar" class="botao mr-2 btn btn-success">Voltar</button>
                       <button  class="mr-2 btn btn-success">Confirmar</button>
                     </div>
                   </div>
@@ -36,6 +36,10 @@
 </template>
 
 <style scoped>
+
+.botao{
+  background-color: rgb(166, 175, 172);
+}
 
 .diamante{
   position: fixed;

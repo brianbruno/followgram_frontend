@@ -47,45 +47,8 @@
                     {
                         icon: 'pe-7s-diamond',
                         title: 'Ganhar Pontos',
-                        child: [
-                            {
-                                title: 'Buttons',
-                                child: [
-                                    {
-                                        title: 'Standard',
-                                        href: '/elements/buttons-standard',
-                                    },
-                                ]
-                            },
-                            {
-                                title: 'Dropdowns',
-                                href: '/elements/dropdowns',
-                            },
-                            {
-                                title: 'Icons',
-                                href: '/elements/icons',
-                            },
-                            {
-                                title: 'Badges',
-                                href: '/elements/badges-labels',
-                            },
-                            {
-                                title: 'Cards',
-                                href: '/elements/cards',
-                            },
-                            {
-                                title: 'List Groups',
-                                href: '/elements/list-group',
-                            },
-                            {
-                                title: 'Timeline',
-                                href: '/elements/timelines',
-                            },
-                            {
-                                title: 'Utilities',
-                                href: '/elements/utilities',
-                            },
-                        ],
+                        href: '/elements/cards',
+                        
                     },
                     {
                         icon: 'pe-7s-graph1',
