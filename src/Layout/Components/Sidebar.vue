@@ -90,40 +90,7 @@
                     {
                         icon: 'pe-7s-graph1',
                         title: 'Promover Conta',
-                        child: [
-                            {
-                                title: 'Tabs',
-                                href: '/components/tabs',
-                            },
-                            {
-                                title: 'Accordions',
-                                href: '/components/accordions',
-                            },
-                            {
-                                title: 'Modals',
-                                href: '/components/modals',
-                            },
-                            {
-                                title: 'Progress Bar',
-                                href: '/components/progress-bar',
-                            },
-                            {
-                                title: 'Tooltips & Popovers',
-                                href: '/components/tooltips-popovers',
-                            },
-                            {
-                                title: 'Carousel',
-                                href: '/components/carousel',
-                            },
-                            {
-                                title: 'Pagination',
-                                href: '/components/pagination',
-                            },
-                            {
-                                title: 'Maps',
-                                href: '/components/maps',
-                            },
-                        ],
+                        href: '/promoverconta'
                     },
 
                     {
