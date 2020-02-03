@@ -6,13 +6,13 @@
                     <div class="main-card mb-3 card">
                         <div class="card-header">Seguir</div>
                         <div class="card-body">
-                            <div v-if="ganhar">
+                            <div v-if="show.includes(request.id)">
                                 <img class="imagemperfil" :src="request.target_user_insta.profile_pic_url" style="width:100px;height:100px;" align="left" ><h5 class="card-title">{{ request.points }} Pontos</h5> {{ request.target_user_insta.full_name}}.
                                 <div>
-                                    <button v-on:click="ganharPontos" class="mr-2 btn btn-success">Ganhe Pontos</button>
+                                    <button v-on:click="ganharPontos(request.id)" class="mr-2 btn btn-success">Ganhe Pontos</button>
                                 </div>
                             </div>
-                            <div v-if="continuarganhando">
+                            <div v-if="!show.includes(request.id)">
                                 <div>
                                     <h5 class="pontos">{{ request.points }}</h5>
                                     <i class="diamante icon-gradient bg-love-kiss pe-2x pe-7s-diamond"></i>
@@ -26,13 +26,12 @@
                                     </div>
                                     <hr>
                                     <div class="botoes">
-                                        <button v-on:click="voltar" class="botao mr-2 btn btn-success" :disabled="doingRequest">Voltar</button>
+                                        <button v-on:click="voltar(request.id)" class="botao mr-2 btn btn-success" :disabled="doingRequest">Voltar</button>
                                         <button v-on:click="confirmQuest(request.id, request.insta_target)" class="mr-2 btn btn-success" :disabled="doingRequest">Confirmar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="card-footer"><i class="pe-7s-stopwatch"></i> 4 minutos para essa oferta acabar.</div>
                     </div>
                 </div>
             </div>
@@ -98,14 +97,12 @@
     export default {
         components: {
             PageTitle,
-
         },
         data: () => ({
             heading: 'Cards',
             subheading: 'Wide selection of cards with multiple styles, borders, actions and hover effects.',
             icon: 'pe-7s-stopwatch icon-gradient bg-amy-crisp',
-            ganhar: true,
-            continuarganhando: false,
+            show: [],
             doingRequest: false,
             requests: [],
             idInstaFollowing: '',
@@ -148,13 +145,20 @@
                     self.doingRequest = false;
                 });
             },
-            ganharPontos(){
-                this.ganhar=false;
-                this.continuarganhando=true;
+            ganharPontos(id){
+                const self = this;
+                const bkp = self.show;
+                self.show = [];
+
+                bkp.forEach(function (requestId) {
+                    if (requestId !== id) {
+                        self.show.push(requestId);
+                    }
+                });
+
             },
-            voltar(){
-                this.ganhar=true;
-                this.continuarganhando=false;
+            voltar(id){
+                this.show.push(id);
             },
             getRequesters() {
                 const self = this;
@@ -169,8 +173,10 @@
                     username: self.usernameInsta,
                 }, config).then(function (response) {
                     const requests = response.data.data;
+                    self.show = [];
                     self.requests = [];
                     requests.forEach(function (request) {
+                        self.show.push(request.id);
                         self.requests.push(request)
                     });
                     self.doingRequest = false;
