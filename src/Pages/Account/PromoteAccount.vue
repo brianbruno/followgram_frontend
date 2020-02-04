@@ -60,18 +60,29 @@
                                                         <div class="d-flex justify-content-between">
                                                             <h5 class="mb-1">Adicionar Post</h5>
                                                         </div>
-
-
                                                         <p class="mb-1">
                                                             <img v-bind:key="post.id" v-for="(post, index) in postsAccount" v-on:click="selectPost(index)" width="60" class="rounded-circle " :src="post.imgUrl">
                                                         </p>
-
                                                     </b-list-group-item>
                                                 </b-list-group>
+                                                <div class="row">
+                                                    <div class="col-sm-8">
+                                                        <b-form-group label="Ganhar Likes:">
+                                                            <b-form-radio-group
+                                                                v-model="pointsLike"
+                                                                :options="options"
+                                                                name="radios-stacked"
+                                                                stacked/>
+                                                        </b-form-group>
+                                                    </div>
+                                                    <div class="col-sm-4 align-self-md-auto" v-if="pointsLike">
+                                                        <span class="float-right"><i class="pe-7s-diamond icon-gradient bg-love-kiss"> </i> {{ pointsLike }} </span>
+                                                    </div>
+                                                </div>
                                                 <button class="btn btn-primary mt-2">Salvar</button>
                                             </div>
                                             <div class="col-md-4 mb-3 card card-body">
-                                                <h5 class="card-title">DBoost - Comentários</h5>
+                                                <h5 class="card-title">Boost - Comentários</h5>
                                                 Em breve.
                                                 <button class="btn btn-primary mt-2">Salvar</button>
                                             </div>
@@ -120,6 +131,7 @@
             points: {},
             selected: 'first',
             pointsFollow: null,
+            pointsLike: null,
             modalShow: false,
             addPost: true,
             options: [
@@ -132,6 +144,7 @@
         mounted() {
             const self = this;
             self.getAccounts();
+            
 
         },
         methods: {
@@ -257,6 +270,15 @@
                 this.getPosts();
 
 
+            },
+            selectPost(getPosts) {
+                this.selectPost = getPosts;
+
+                if (this.postsAccount[getPosts].instagram_requests[0]) {
+                    this.pointsLike = this.postsAccount[getPosts].instagram_requests[0].points
+                } else {
+                    this.pointsLike = "15";
+                }
             }
         }
     }
