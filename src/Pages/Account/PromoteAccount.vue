@@ -7,7 +7,7 @@
                         <h5>Suas contas:</h5>
                         <div class="row">
                             <div class="col-md-12">
-                                <img v-bind:key="account.id" v-for="(account, index) in accounts" v-on:click="selectAccount(index)" width="60" class="rounded-circle profile-icon" :src="account.profile_pic_url" :alt="account.username">
+                                <img v-bind:key="account.id" v-for="(account, index) in accounts" v-on:click="selectAccount(index)" width="60" class="rounded-circle " :src="account.profile_pic_url" :alt="account.username">
                             </div>
                         </div>
                         <br><br>
@@ -53,16 +53,17 @@
                                             <div class="col-md-4 mb-3 card card-body">
                                                 <h5 class="card-title">
                                                     Boost - Curtidas
-                                                    <b-form-checkbox class="float-right" v-model="accounts[selectedAccountIndex].is_request_follow" name="check-button" switch size="lg" />
+                                                    <b-form-checkbox class="float-right" v-model="accounts[selectedAccountIndex].is_request_like" name="check-button" switch size="lg" />
                                                 </h5>
                                                 <b-list-group v-if="addPost">
                                                     <b-list-group-item href="#" disabled class="flex-column align-items-start">
                                                         <div class="d-flex justify-content-between">
                                                             <h5 class="mb-1">Adicionar Post</h5>
                                                         </div>
-
+                                                            
+                                                            
                                                         <p class="mb-1">
-                                                            <b-img rounded alt="Rounded image"></b-img>
+                                                            <img v-bind:key="post.id" v-for="(post, index) in postsAccount" v-on:click="selectPost(index)" width="60" class="rounded-circle " :src="post.imgUrl" :alt="account.username">
                                                         </p>
 
                                                     </b-list-group-item>
@@ -113,6 +114,7 @@
             subheading: 'Highly configurable boxes best used for showing numbers in an user friendly way.',
             icon: 'pe-7s-wallet icon-gradient bg-plum-plate',
             accounts: [],
+            postsAccount: [],
             doingRequest: false,
             selectedAccountIndex: -1,
             points: {},
@@ -130,7 +132,7 @@
         mounted() {
             const self = this;
             self.getAccounts();
-            self.getPosts();
+            
         },
         methods: {
             getPosts() {
@@ -144,9 +146,15 @@
                 };
 
                 axios.post('https://insta.brian.place/api/insta/getPosts', {
-                    username: self.usernameInsta,
+                    username: self.accounts[self.selectedAccountIndex].username,
                 }, config).then(function (response) {
                     console.log(response)
+
+                    const postAccount = response.data.data;
+                    self.postAccount = [];
+                    postAccount.forEach(function (account) {
+                        self.postAccount.push(account)
+                    })
 
                     self.doingRequest = false;
                 }).catch(function (error) {
@@ -248,6 +256,8 @@
                 } else {
                     this.pointsFollow = "15";
                 }
+                this.getPosts();
+
 
             }
         }
