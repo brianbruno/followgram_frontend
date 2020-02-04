@@ -60,10 +60,10 @@
                                                         <div class="d-flex justify-content-between">
                                                             <h5 class="mb-1">Adicionar Post</h5>
                                                         </div>
-                                                            
-                                                            
+
+
                                                         <p class="mb-1">
-                                                            <img v-bind:key="post.id" v-for="(post, index) in postsAccount" v-on:click="selectPost(index)" width="60" class="rounded-circle " :src="post.imgUrl" :alt="account.username">
+                                                            <img v-bind:key="post.id" v-for="(post, index) in postsAccount" v-on:click="selectPost(index)" width="60" class="rounded-circle " :src="post.imgUrl">
                                                         </p>
 
                                                     </b-list-group-item>
@@ -132,7 +132,7 @@
         mounted() {
             const self = this;
             self.getAccounts();
-            
+
         },
         methods: {
             getPosts() {
@@ -148,13 +148,11 @@
                 axios.post('https://insta.brian.place/api/insta/getPosts', {
                     username: self.accounts[self.selectedAccountIndex].username,
                 }, config).then(function (response) {
-                    console.log(response)
-
                     const postAccount = response.data.data;
-                    self.postAccount = [];
+                    self.postsAccount = [];
                     postAccount.forEach(function (account) {
-                        self.postAccount.push(account)
-                    })
+                        self.postsAccount.push(account)
+                    });
 
                     self.doingRequest = false;
                 }).catch(function (error) {
