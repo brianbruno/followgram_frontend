@@ -4,7 +4,9 @@
             <div class="row">
                 <div class="col-md-4" v-bind:key="request.id" v-for="request in requests">
                     <div class="main-card mb-3 card">
-                        <div class="card-header">Seguir</div>
+                        <div class="card-header" v-if="request.type == 'follow'">Seguir</div>
+                        <div class="card-header" v-if="request.type == 'like'">Curtir</div>
+                        <div class="card-header" v-if="request.type == 'comment'">Comentar</div>
                         <div class="card-body">
                             <div v-if="show.includes(request.id)">
                                 <img class="imagemperfil" :src="request.target_user_insta.profile_pic_url" style="width:100px;height:100px;" align="left" ><h5 class="card-title">{{ request.points }} Pontos</h5> {{ request.target_user_insta.full_name}}.

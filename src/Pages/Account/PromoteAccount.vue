@@ -70,7 +70,7 @@
                                                 <button class="btn btn-primary mt-2">Salvar</button>
                                             </div>
                                             <div class="col-md-4 mb-3 card card-body">
-                                                <h5 class="card-title">Boost - Comentários</h5>
+                                                <h5 class="card-title">DBoost - Comentários</h5>
                                                 Em breve.
                                                 <button class="btn btn-primary mt-2">Salvar</button>
                                             </div>
