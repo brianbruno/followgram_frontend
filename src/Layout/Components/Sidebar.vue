@@ -65,21 +65,6 @@
                         title: 'Adicionar Conta',
                         href: '/adicionarconta',
                     },
-
-                    {
-                        icon: 'pe-7s-light',
-                        title: 'Gerenciar Contas',
-                        child: [
-                            {
-                                title: 'Controls',
-                                href: '/forms/controls',
-                            },
-                            {
-                                title: 'Layouts',
-                                href: '/forms/layouts',
-                            },
-                        ],
-                    },
                 ],
                 collapsed: true,
 
