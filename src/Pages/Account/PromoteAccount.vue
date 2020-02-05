@@ -54,7 +54,7 @@
                                             <div class="col-md-4 mb-3 card card-body">
                                                 <h5 class="card-title">
                                                     Boost - Curtidas
-                                                    <b-form-checkbox class="float-right" v-model="accounts[selectedAccountIndex].is_request_like" name="check-button" switch size="lg" />
+                                                    <!--<b-form-checkbox class="float-right" v-model="accounts[selectedAccountIndex].is_request_like" name="check-button" switch size="lg" />-->
                                                 </h5>
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -181,7 +181,7 @@
         }),
         mounted() {
             const self = this;
-            self.getAccounts();
+            self.getAccounts(true);
         },
         methods: {
             getPosts() {
@@ -215,7 +215,7 @@
                     self.doingRequest = false;
                 });
             },
-            getAccounts() {
+            getAccounts(selectAccount) {
                 const self = this;
                 self.doingRequest = true;
 
@@ -234,9 +234,11 @@
                         self.accounts.push(account)
                     });
 
-                    // Seleciona a última conta
-                    if (self.accounts.length > 0) {
-                        self.selectAccount(self.accounts.length - 1)
+                    if (selectAccount) {
+                        // Seleciona a última conta
+                        if (self.accounts.length > 0 && self.postSelectedIndex === -1) {
+                            self.selectAccount(self.accounts.length - 1)
+                        }
                     }
 
                     self.doingRequest = false;
@@ -274,7 +276,14 @@
 
                             if (response.data.success) {
                                 self.doingRequest = false;
-                                self.getAccounts();
+                                self.getAccounts(false);
+                                new Noty({
+                                    theme: 'mint',
+                                    text: response.data.message,
+                                    timeout: 2500,
+                                    layout: 'topRight',
+                                    type: 'success',
+                                }).show();
                             } else {
                                 new Noty({
                                     theme: 'mint',
@@ -299,6 +308,7 @@
             },
             selectAccount(accountIndex) {
                 this.selectedAccountIndex = accountIndex;
+                this.postsAccount = []
 
                 if (this.accounts[accountIndex].instagram_requests[0]) {
                     this.pointsFollow = this.accounts[accountIndex].instagram_requests[0].points
@@ -321,7 +331,8 @@
                     }
                 };
 
-                const active = self.accounts[self.selectedAccountIndex].is_request_like;
+                //const active = self.accounts[self.selectedAccountIndex].is_request_like;
+                const active = true;
 
                 axios.post('https://insta.brian.place/api/requests/add', {
                     idInstaTarget: idInstaTarget,
@@ -333,7 +344,8 @@
 
                     if (response.data.success) {
                         self.doingRequest = false;
-                        self.getAccounts();
+                        self.postSelectedIndex = -1;
+                        self.getAccounts(false);
                         new Noty({
                             theme: 'mint',
                             text: response.data.message,
@@ -341,7 +353,6 @@
                             layout: 'topRight',
                             type: 'success',
                         }).show();
-                        self.doingRequest = false;
                     } else {
                         new Noty({
                             theme: 'mint',
@@ -382,7 +393,7 @@
 
                     if (response.data.success) {
                         self.doingRequest = false;
-                        self.getAccounts();
+                        self.getAccounts(false);
 
                         new Noty({
                             theme: 'mint',
