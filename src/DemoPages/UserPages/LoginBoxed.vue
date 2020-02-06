@@ -50,11 +50,7 @@
                                     <a  class="btn-lg btn btn-link">Esqueci a senha</a></router-link>
                                 </div>
                                 <div class="float-right">
-<<<<<<< HEAD
-                                    <b-button variant="primary" size="lg" v-on:click="login">Login</b-button>
-=======
                                     <b-button variant="primary" size="lg" :disabled="doingRequest" v-on:click="login">Login</b-button>
->>>>>>> d33d96d409cc498e0181cc71f80d73f2e8416a25
                                 </div>
                             </div>
                         </div>
