@@ -50,7 +50,11 @@
                                     <a  class="btn-lg btn btn-link">Esqueci a senha</a></router-link>
                                 </div>
                                 <div class="float-right">
+<<<<<<< HEAD
                                     <b-button variant="primary" size="lg" v-on:click="login">Login</b-button>
+=======
+                                    <b-button variant="primary" size="lg" :disabled="doingRequest" v-on:click="login">Login</b-button>
+>>>>>>> d33d96d409cc498e0181cc71f80d73f2e8416a25
                                 </div>
                             </div>
                         </div>
@@ -73,12 +77,14 @@
         return {
             email: '',
             password: '',
-            remember_me: ''
+            remember_me: '',
+            doingRequest: false,
         }
     },
     methods: {
         login: function () {
             const self = this;
+            self.doingRequest = true;
 
             if (self.email && self.password) {
                 axios.post('https://insta.brian.place/api/auth/login', {
@@ -87,10 +93,12 @@
                     remember_me: !!self.remember_me
                 })
                     .then(function (response) {
+                        self.doingRequest = false;
                         window.localStorage.setItem('access_token', response.data.token_type + ' ' + response.data.access_token);
                         self.userInfo()
                     })
                     .catch(function () {
+                        self.doingRequest = false;
                         new Noty({
                             theme: 'mint',
                             text: 'Usuário ou senha inválidos',
@@ -111,6 +119,7 @@
         },
         userInfo: function () {
             const self = this;
+            self.doingRequest = true;
             // user.name
             let config = {
                 headers: {
@@ -120,6 +129,7 @@
 
             axios.post('https://insta.brian.place/api/auth/user', {}, config)
                 .then(function (response) {
+                    self.doingRequest = false;
                     window.localStorage.setItem('user.id', response.data.id);
                     window.localStorage.setItem('user.name', response.data.name);
                     window.localStorage.setItem('user.new_followers', response.data.new_followers);
@@ -130,6 +140,7 @@
                     self.$router.push('/home');
                 })
                 .catch(function () {
+                    self.doingRequest = false;
                     new Noty({
                         theme: 'mint',
                         text: 'Usuário ou senha inválidos',

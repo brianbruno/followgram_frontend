@@ -28,7 +28,10 @@
     "popper.js": "^1.15.0",
     "sass-loader": "^7.1.0",
     "vue": "^2.6.10",
+<<<<<<< HEAD
     "vue-analytics": "^5.22.1",
+=======
+>>>>>>> d33d96d409cc498e0181cc71f80d73f2e8416a25
     "vue-chartjs": "^3.4.2",
     "vue-perfect-scrollbar": "^0.1.0",
     "vue-router": "^3.0.5",
