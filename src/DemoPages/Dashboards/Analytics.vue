@@ -73,7 +73,7 @@
                                                     <span class="text-warning">{{ new_followers }}</span>
                                                 </div>
                                                 <div class="widget-title ml-2 font-size-lg font-weight-normal text-dark">
-                                                    <span class="opacity-5 text-muted pl-2 pr-1">5%</span> a mais que ontem
+                                                    <!-- <span class="opacity-5 text-muted pl-2 pr-1">5%</span> a mais que ontem -->
                                                 </div>
                                             </div>
                                         </div>
@@ -112,7 +112,7 @@
                                                     <span class="text-warning">{{ new_likes }}</span>
                                                 </div>
                                                 <div class="widget-title ml-2 font-size-lg font-weight-normal text-dark">
-                                                    <span class="opacity-5 text-muted pl-2 pr-1">76%</span> a mais que ontem
+                                                    <!-- <span class="opacity-5 text-muted pl-2 pr-1">76%</span> a mais que ontem -->
                                                 </div>
                                             </div>
                                         </div>

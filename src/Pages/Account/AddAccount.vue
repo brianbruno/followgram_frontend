@@ -12,6 +12,15 @@
                             <small class="form-text text-muted">Sua conta não pode ser privada.</small>
                         </b-form-group>
 
+                        <h3>Como funciona?</h3>
+                        <br>
+                        <h5><strong>1. </strong>Você adiciona sua conta no Instagram</h5>
+                        <h5><strong>2. </strong>Realiza a confirmação</h5>
+                        <h5><strong>3. </strong>Adiciona as publicações que você deseja promover (na aba Promover Conta)</h5>
+                        <h5><strong>4. </strong>Ganha pontos (na aba Ganhar pontos)</h5>
+                        <h5><strong>5. </strong>Aguarda a confirmação (até 3 minutos)</h5>
+                        <h5><strong>6. </strong>Recebe novos seguidores e/ou curtidas</h5>
+
                         <b-button class="mr-2 mb-2 btn-hover-shine btn-transition float-right" variant="info" v-on:click="avancarFase1" :disabled="doingRequest">Próximo</b-button>
                     </div>
                     <div class="col-md-6" v-if="fase === 2">
@@ -20,11 +29,18 @@
                             <div class="col-md-12">
                                 <h3>Quase lá!</h3>
                                 <h4>
-                                    Copie e cole o código a seguir nos comentários da sua última foto:
+                                    Copie e cole o texto a seguir (completo) nos comentários da sua <strong>última</strong> foto:
                                 </h4>
+                                <h4>
+                                    Sua conta não pode ser privada.
+                                </h4>
+                                <br>
                                 <h6>
                                     {{ confirmKey }}
                                 </h6>
+                                <br>
+                                <br>
+                                <br>
                                 <h5>
                                     Você pode apagar o comentário logo após
                                 </h5>
