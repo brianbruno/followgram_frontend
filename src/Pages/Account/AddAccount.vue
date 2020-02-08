@@ -20,6 +20,9 @@
                         <h5><strong>4. </strong>Ganha pontos (na aba Ganhar pontos)</h5>
                         <h5><strong>5. </strong>Aguarda a confirmação (até 3 minutos)</h5>
                         <h5><strong>6. </strong>Recebe novos seguidores e/ou curtidas</h5>
+                        <br>
+                        <br>
+                        <h5>Caso precise de ajuda mande um direct para <strong>@marketingfollowgram.</strong></h5>
 
                         <b-button class="mr-2 mb-2 btn-hover-shine btn-transition float-right" variant="info" v-on:click="avancarFase1" :disabled="doingRequest">Próximo</b-button>
                     </div>
