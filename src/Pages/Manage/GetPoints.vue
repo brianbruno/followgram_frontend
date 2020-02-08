@@ -102,7 +102,8 @@
             doingRequest: false,
             requests: [],
             idInstaFollowing: '',
-            accounts: []
+            accounts: [],
+            openedPage: null,
         }),
         mounted() {
             const self = this;
@@ -171,8 +172,8 @@
                 });
 
                 if (!window.mobilecheck()) {
-                    const win = window.open(url, '_blank');
-                    win.focus();
+                    self.openedPage = window.open(url, '_blank');
+                    self.openedPage.focus();
                 } else {
                     window.open(url, '_blank');
                     new Noty({
@@ -270,6 +271,10 @@
                         }).show();
 
                         self.removeQuest(idQuest);
+                        if (self.openedPage) {
+                            self.openedPage.close();
+                        }
+
                     } else {
                         new Noty({
                             theme: 'mint',
@@ -316,6 +321,9 @@
                             type: 'info',
                         }).show();
                         self.removeQuest(idQuest);
+                        if (self.openedPage) {
+                            self.openedPage.close();
+                        }
                     } else {
                         new Noty({
                             theme: 'mint',
