@@ -1,7 +1,7 @@
 <template>
     <div class="app-footer">
         <div class="app-footer__inner text-center">
-            Copyright 2020 FollowGram
+            Copyright 2020 - Ganhe Seguidores
         </div>
     </div>
 </template>

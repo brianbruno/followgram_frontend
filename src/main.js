@@ -2,6 +2,7 @@ import Vue from 'vue'
 import router from './router'
 
 import BootstrapVue from "bootstrap-vue"
+import VueAnalytics from "vue-analytics";
 
 import App from './App'
 
@@ -11,6 +12,10 @@ import Pages from './Layout/Wrappers/pagesLayout.vue';
 Vue.config.productionTip = false;
 
 Vue.use(BootstrapVue);
+Vue.use(VueAnalytics, {
+    id: 'UA-157898643-1',
+    router
+});
 
 Vue.component('default-layout', Default);
 Vue.component('userpages-layout', Pages);
