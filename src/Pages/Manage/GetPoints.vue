@@ -23,8 +23,8 @@
                                             </div>
                                             <div class="widget-content-right">
                                                 <div role="group" class="btn-group-sm btn-group">
-                                                    <button v-if="request.type === 'follow'" type="button" v-on:click="ganharPontos(request.id, 'https://instagram.com/'+request.target_user_insta.username)" class="btn-shadow btn btn-primary">Curtir</button>
-                                                    <button v-if="request.type === 'like'" type="button" v-on:click="ganharPontos(request.id, request.post_url)" class="btn-shadow btn btn-primary">Seguir</button>
+                                                    <button v-if="request.type === 'follow'" type="button" v-on:click="ganharPontos(request.id, 'https://instagram.com/'+request.target_user_insta.username)" class="btn-shadow btn btn-primary">Seguir</button>
+                                                    <button v-if="request.type === 'like'" type="button" v-on:click="ganharPontos(request.id, request.post_url)" class="btn-shadow btn btn-primary">Curtir</button>
                                                 </div>
                                             </div>
                                         </div>
