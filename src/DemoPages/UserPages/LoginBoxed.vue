@@ -45,10 +45,10 @@
                                 </h6>
                             </div>
                             <div class="modal-footer clearfix">
-                                <!--<div class="float-left">
-                                    <router-link :to="{ path:  '/pages/forgot-password-boxed'}">
+                                <div class="float-left">
+                                    <router-link :to="{ path:  '/esquecisenha'}">
                                     <a  class="btn-lg btn btn-link">Esqueci a senha</a></router-link>
-                                </div>-->
+                                </div>
                                 <div class="float-right">
                                     <b-button variant="primary" size="lg" :disabled="doingRequest" v-on:click="login">Login</b-button>
                                 </div>
@@ -104,9 +104,10 @@
                         }).show();
                     });
             } else {
+                self.doingRequest = false;
                 new Noty({
                     theme: 'mint',
-                    text: 'Digie o e-mail e a senha.',
+                    text: 'Digite o e-mail e a senha.',
                     timeout: 2500,
                     layout: 'topRight',
                     type: 'error',

@@ -7,7 +7,7 @@
                 <div class="row">
                     <div class="col-md-6" v-if="fase === 1">
                         <b-form-group id="inputusername" label-for="username_insta" description=" ">
-                            <b-form-input id="username_insta" type="email" required v-model="usernameInsta" placeholder="Nome de usuário IG">
+                            <b-form-input id="username_insta" type="email" required v-model="usernameInsta" placeholder="Nome de usuário IG (Sem @)">
                             </b-form-input>
                             <small class="form-text text-muted">Sua conta não pode ser privada.</small>
                         </b-form-group>
@@ -20,6 +20,9 @@
                         <h5><strong>4. </strong>Ganha pontos (na aba Ganhar pontos)</h5>
                         <h5><strong>5. </strong>Aguarda a confirmação (até 3 minutos)</h5>
                         <h5><strong>6. </strong>Recebe novos seguidores e/ou curtidas</h5>
+                        <br>
+                        <br>
+                        <h5>Caso precise de ajuda mande um direct para <strong>@marketingfollowgram.</strong></h5>
 
                         <b-button class="mr-2 mb-2 btn-hover-shine btn-transition float-right" variant="info" v-on:click="avancarFase1" :disabled="doingRequest">Próximo</b-button>
                     </div>

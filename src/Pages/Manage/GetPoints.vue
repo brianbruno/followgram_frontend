@@ -1,12 +1,13 @@
 <template>
     <div>
+        <vue-element-loading :active="doingRequest" spinner="bar-fade-scale"/>
         <div class="content">
             <div class="row">
                 <div class="col-md-4" v-bind:key="request.id" v-for="request in requests">
-                    <div class="main-card mb-3 card">
-                        <div class="card-header" v-if="request.type == 'follow'"><h5>Seguir @{{request.target_user_insta.username}}</h5></div>
-                        <div class="card-header" v-if="request.type == 'like'"><h5>Curtir foto de @{{request.target_user_insta.username}}</h5></div>
-                        <div class="card-header" v-if="request.type == 'comment'"><h5>Comentar</h5></div>
+                    <div class="main-card shadow p-3 mb-5 bg-white rounded card">
+                        <div class="card-header" v-if="request.type === 'follow'"><h5>Seguir @{{request.target_user_insta.username}} <div class="float-right"><i class="diamante icon-gradient bg-love-kiss pe-7s-diamond"></i> {{ request.points }}</div> </h5></div>
+                        <div class="card-header" v-if="request.type === 'like'"><h5>Curtir foto de @{{request.target_user_insta.username}} <div class="float-right"><i class="diamante icon-gradient bg-love-kiss pe-7s-diamond"></i> {{ request.points }}</div></h5></div>
+                        <div class="card-header" v-if="request.type === 'comment'"><h5>Comentar</h5> <div class="float-right"><i class="diamante icon-gradient bg-love-kiss pe-7s-diamond"></i> {{ request.points }}</div> </div>
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item" v-if="show.includes(request.id)">
@@ -22,8 +23,8 @@
                                             </div>
                                             <div class="widget-content-right">
                                                 <div role="group" class="btn-group-sm btn-group">
-                                                    <button v-if="request.type === 'follow'" type="button" v-on:click="ganharPontos(request.id, 'https://instagram.com/'+request.target_user_insta.username)" class="btn-shadow btn btn-primary">Ganhe Pontos</button>
-                                                    <button v-if="request.type === 'like'" type="button" v-on:click="ganharPontos(request.id, request.post_url)" class="btn-shadow btn btn-primary">Ganhe Pontos</button>
+                                                    <button v-if="request.type === 'follow'" type="button" v-on:click="ganharPontos(request.id, 'https://instagram.com/'+request.target_user_insta.username)" class="btn-shadow btn btn-primary">Curtir</button>
+                                                    <button v-if="request.type === 'like'" type="button" v-on:click="ganharPontos(request.id, request.post_url)" class="btn-shadow btn btn-primary">Seguir</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -66,9 +67,9 @@
                         </div>
                     </div>
                 </div>
-                <div v-if="requests.length === 0" class="text-center">
+                <div v-if="requests.length === 0 && !doingRequest">
                     <div class="main-card card">
-                        <div class="card-body">
+                        <div class="card-body text-center">
                             <h2>
                                 Parece que não temos nenhuma interação disponível para você.
                             </h2>
@@ -102,7 +103,8 @@
             doingRequest: false,
             requests: [],
             idInstaFollowing: '',
-            accounts: []
+            accounts: [],
+            openedPage: null,
         }),
         mounted() {
             const self = this;
@@ -171,8 +173,8 @@
                 });
 
                 if (!window.mobilecheck()) {
-                    const win = window.open(url, '_blank');
-                    win.focus();
+                    self.openedPage = window.open(url, '_blank');
+                    self.openedPage.focus();
                 } else {
                     window.open(url, '_blank');
                     new Noty({
@@ -270,6 +272,10 @@
                         }).show();
 
                         self.removeQuest(idQuest);
+                        if (self.openedPage) {
+                            self.openedPage.close();
+                        }
+
                     } else {
                         new Noty({
                             theme: 'mint',
@@ -316,6 +322,9 @@
                             type: 'info',
                         }).show();
                         self.removeQuest(idQuest);
+                        if (self.openedPage) {
+                            self.openedPage.close();
+                        }
                     } else {
                         new Noty({
                             theme: 'mint',

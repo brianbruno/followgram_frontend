@@ -25,7 +25,7 @@ export default new Router({
     },
     routes: [
 
-        // Dashboards
+        // Dashboard
 
         {
             path: '/home',
@@ -34,7 +34,7 @@ export default new Router({
             component: () => import('../DemoPages/Dashboards/Analytics.vue'),
         },
 
-        // Pages
+        // Auth
 
         {
             path: '/',
@@ -43,6 +43,36 @@ export default new Router({
             beforeEnter: isLoggedInBlock,
             component: () => import('../DemoPages/UserPages/LoginBoxed.vue'),
         },
+        {
+            path: '/',
+            name: 'login-boxed',
+            meta: {layout: 'userpages'},
+            beforeEnter: isLoggedInBlock,
+            component: () => import('../DemoPages/UserPages/LoginBoxed.vue'),
+        },
+        {
+            path: '/pages/register-boxed',
+            name: 'register-boxed',
+            meta: {layout: 'userpages'},
+            beforeEnter: isLoggedInBlock,
+            component: () => import('../DemoPages/UserPages/RegisterBoxed.vue'),
+        },
+        {
+            path: '/esquecisenha',
+            name: 'forgot-password-boxed',
+            meta: {layout: 'userpages'},
+            beforeEnter: isLoggedInBlock,
+            component: () => import('../Pages/Auth/ForgotPassword.vue'),
+        },
+        {
+            path: '/recuperarsenha/:token',
+            name: 'reset-password-boxed',
+            meta: {layout: 'userpages'},
+            beforeEnter: isLoggedInBlock,
+            component: () => import('../Pages/Auth/ResetPassword.vue'),
+        },
+
+        // Pages
         {
             path: '/adicionarconta',
             name: 'adicionar-conta',
@@ -60,20 +90,6 @@ export default new Router({
             name: 'ganhar-pontos',
             beforeEnter: isLoggedIn,
             component: () => import('../Pages/Manage/GetPoints.vue'),
-        },
-        {
-            path: '/pages/register-boxed',
-            name: 'register-boxed',
-            meta: {layout: 'userpages'},
-            beforeEnter: isLoggedInBlock,
-            component: () => import('../DemoPages/UserPages/RegisterBoxed.vue'),
-        },
-        {
-            path: '/pages/forgot-password-boxed',
-            name: 'forgot-password-boxed',
-            meta: {layout: 'userpages'},
-            beforeEnter: isLoggedInBlock,
-            component: () => import('../DemoPages/UserPages/ForgotPasswordBoxed.vue'),
         },
 
         // Elements

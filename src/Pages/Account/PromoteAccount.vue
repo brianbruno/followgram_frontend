@@ -1,5 +1,6 @@
 <template>
     <div>
+        <vue-element-loading :active="doingRequest" spinner="bar-fade-scale"/>
         <div class="row">
             <div class="col-md-12">
                 <div class="main-card mb-3 card">
@@ -106,7 +107,7 @@
                                                                 <b-form-radio-group
                                                                     id="pointsLike"
                                                                     v-model="pointsLike"
-                                                                    :options="options"
+                                                                    :options="optionsLike"
                                                                     name="pointsLike"
                                                                     stacked/>
                                                             </b-form-group>
@@ -172,11 +173,19 @@
             pointsLike: null,
             modalShow: false,
             addPost: true,
+            optionsLike: [
+                { text: 'Muito devagar', value: 6 },
+                { text: 'Devagar', value: 8 },
+                { text: 'Normal', value: 10 },
+                { text: 'Rápido', value: 12 },
+                { text: 'Ultra Rápido', value: 14 },
+            ],
             options: [
                 { text: 'Muito devagar', value: 10 },
                 { text: 'Devagar', value: 15 },
                 { text: 'Normal', value: 20 },
-                { text: 'Rápido', value: 25 }
+                { text: 'Rápido', value: 25 },
+                { text: 'Ultra Rápido', value: 30 }
             ]
         }),
         mounted() {
