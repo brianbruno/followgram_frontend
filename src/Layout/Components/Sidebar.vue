@@ -47,8 +47,7 @@
                     {
                         icon: 'pe-7s-diamond',
                         title: 'Ganhar Pontos',
-                        href: '/ganharpontos',
-
+                        href: '/ganharpontos'
                     },
                     {
                         icon: 'pe-7s-graph1',

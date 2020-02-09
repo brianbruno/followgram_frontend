@@ -1,5 +1,6 @@
 <template>
     <div>
+        <vue-element-loading :active="doingRequest" spinner="bar-fade-scale"/>
         <div class="h-100 bg-plum-plate bg-animation">
             <div class="d-flex h-100 justify-content-center align-items-center">
                 <b-col md="8" class="mx-auto app-login-box">
@@ -47,7 +48,7 @@
                             <div class="modal-footer clearfix">
                                 <div class="float-left">
                                     <router-link :to="{ path:  '/esquecisenha'}">
-                                    <a  class="btn-lg btn btn-link">Esqueci a senha</a></router-link>
+                                    <a class="btn-lg btn btn-link" :disabled="doingRequest">Esqueci a senha</a></router-link>
                                 </div>
                                 <div class="float-right">
                                     <b-button variant="primary" size="lg" :disabled="doingRequest" v-on:click="login">Login</b-button>
