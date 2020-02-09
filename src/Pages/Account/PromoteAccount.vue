@@ -385,7 +385,21 @@
                 });
             },
             selectPost(indexSelectedPost) {
-                this.postSelectedIndex = indexSelectedPost;
+
+                const postsMade = this.accounts[this.selectedAccountIndex].instagram_requests.filter((item) => { return item.type === 'like'});
+
+                if (postsMade.length <= 10) {
+                    this.postSelectedIndex = indexSelectedPost;
+                } else {
+                    new Noty({
+                        theme: 'mint',
+                        text: 'Você só pode promover 10 posts por conta ao mesmo tempo.',
+                        timeout: 2500,
+                        layout: 'topRight',
+                        type: 'warning',
+                    }).show();
+                }
+
             },
             deleteLikeRequest(id) {
                 const self = this;

@@ -6,7 +6,7 @@
 
                 <div class="row">
                     <div class="col-md-6" v-if="fase === 1">
-                        <b-form-group id="inputusername" label-for="username_insta" description=" ">
+                        <b-form-group id="inputusername" prepend="@"  label-for="username_insta" description=" ">
                             <b-form-input id="username_insta" type="email" required v-model="usernameInsta" placeholder="Nome de usuário IG (Sem @)">
                             </b-form-input>
                             <small class="form-text text-muted">Sua conta não pode ser privada.</small>

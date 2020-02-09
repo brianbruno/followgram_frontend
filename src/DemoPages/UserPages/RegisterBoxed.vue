@@ -1,5 +1,6 @@
 <template>
     <div>
+        <vue-element-loading :active="doingRequest" spinner="bar-fade-scale"/>
         <div class="h-100 bg-premium-dark">
             <div class="d-flex h-100 justify-content-center align-items-center">
                 <b-col md="8" class="mx-auto app-login-box">
@@ -98,12 +99,14 @@
                 email: '',
                 password: '',
                 password_confirmation: '',
-                termos: ''
+                termos: '',
+                doingRequest: false,
             }
         },
         methods: {
             register: function () {
                 const self = this;
+                self.doingRequest = true;
 
                 if (self.name && self.email && self.password && self.password_confirmation) {
 
@@ -116,6 +119,7 @@
                                 layout: 'topRight',
                                 type: 'error',
                             }).show();
+                            self.doingRequest = false;
                         } else {
                             axios.post('https://insta.brian.place/api/auth/signup', {
                                 name: self.name,
@@ -125,9 +129,11 @@
                             })
                                 .then(function (response) {
                                     window.localStorage.setItem('access_token', response.data.token_type + ' ' + response.data.access_token);
+                                    self.doingRequest = false;
                                     self.login();
                                 })
                                 .catch(function (error) {
+                                    self.doingRequest = false;
 
                                     const keys = Object.keys(error.response.data.errors);
 
@@ -153,6 +159,7 @@
                             layout: 'topRight',
                             type: 'error',
                         }).show();
+                        self.doingRequest = false;
                     }
 
                 } else {
@@ -163,10 +170,13 @@
                         layout: 'topRight',
                         type: 'error',
                     }).show();
+                    self.doingRequest = false;
                 }
             },
             login: function () {
                 const self = this;
+
+                self.doingRequest = true;
 
                 if (self.email && self.password) {
                     axios.post('https://insta.brian.place/api/auth/login', {
@@ -176,9 +186,11 @@
                     })
                         .then(function (response) {
                             window.localStorage.setItem('access_token', response.data.token_type + ' ' + response.data.access_token);
-                            self.userInfo()
+                            self.doingRequest = false;
+                            self.userInfo();
                         })
                         .catch(function () {
+                            self.doingRequest = false;
                             new Noty({
                                 theme: 'mint',
                                 text: 'Usuário ou senha inválidos',
@@ -188,6 +200,7 @@
                             }).show();
                         });
                 } else {
+                    self.doingRequest = false;
                     new Noty({
                         theme: 'mint',
                         text: 'Digie o e-mail e a senha.',
@@ -205,7 +218,7 @@
                         Authorization: window.localStorage.getItem('access_token'),
                     }
                 };
-
+                self.doingRequest = true;
                 axios.post('https://insta.brian.place/api/auth/user', {}, config)
                     .then(function (response) {
                         window.localStorage.setItem('user.id', response.data.id);
@@ -216,8 +229,10 @@
                         window.localStorage.setItem('user.points', response.data.points);
                         window.localStorage.setItem('user.pending_points', response.data.pending_points);
                         self.$router.push('/home');
+                        self.doingRequest = false;
                     })
                     .catch(function (error) {
+                        self.doingRequest = false;
                         new Noty({
                             theme: 'mint',
                             text: error.message,
