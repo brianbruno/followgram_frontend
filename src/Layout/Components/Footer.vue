@@ -1,7 +1,7 @@
 <template>
     <div class="app-footer">
         <div class="app-footer__inner text-center">
-            Copyright 2020 - Ganhe Seguidores
+            Copyright 2020 - Ganhe Seguidores - Precisa de ajuda? Mande direct para o IG: @marketingfollowgram.
         </div>
     </div>
 </template>
