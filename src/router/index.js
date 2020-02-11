@@ -91,6 +91,12 @@ export default new Router({
             beforeEnter: isLoggedIn,
             component: () => import('../Pages/Manage/GetPoints.vue'),
         },
+        {
+            path: '/queroajuda',
+            name: 'quero-ajuda',
+            beforeEnter: isLoggedIn,
+            component: () => import('../Pages/Help/Help.vue'),
+        },
 
         // Elements
 

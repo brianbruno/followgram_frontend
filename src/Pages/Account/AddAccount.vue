@@ -1,5 +1,6 @@
 <template>
     <div>
+        <vue-element-loading :active="doingRequest" spinner="bar-fade-scale"/>
         <div class="main-card mb-3 card">
             <div class="card-body">
                 <h5 class="card-title">Adicionar Conta</h5>
