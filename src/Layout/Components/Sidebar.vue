@@ -64,6 +64,15 @@
                         title: 'Adicionar Conta',
                         href: '/adicionarconta',
                     },
+                    {
+                        header: true,
+                        title: 'Suporte',
+                    },
+                    {
+                        icon: 'pe-7s-help1',
+                        title: 'Ajuda',
+                        href: '/queroajuda',
+                    },
                 ],
                 collapsed: true,
 

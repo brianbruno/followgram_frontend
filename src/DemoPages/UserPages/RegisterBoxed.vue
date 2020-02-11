@@ -138,13 +138,19 @@
                                     const keys = Object.keys(error.response.data.errors);
 
                                     keys.forEach(function (key) {
-                                        new Noty({
-                                            theme: 'mint',
-                                            text: 'Verifique o campo: ' + key,
-                                            timeout: 2500,
-                                            layout: 'topRight',
-                                            type: 'error',
-                                        }).show();
+                                        const errosReported = error.response.data.errors[key];
+
+                                        errosReported.forEach(function (message) {
+                                            new Noty({
+                                                theme: 'mint',
+                                                text: message,
+                                                timeout: 2500,
+                                                layout: 'topRight',
+                                                type: 'error',
+                                            }).show();
+                                        });
+
+
                                     });
 
 
