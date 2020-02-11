@@ -17,7 +17,7 @@
                         <b-form-group id="inputusername" prepend="@"  label-for="username_insta" description=" ">
                             <b-form-textarea id="username_insta" required v-model="pedidoAjuda" placeholder="Descreva bem o seu problema" rows="5">
                             </b-form-textarea>
-                            <small class="text-black-50" v-if="pedidoAjuda.length < 140">Restando {{ 140 - pedidoAjuda.length}} caracteres.</small>
+                            <small class="text-black-50" v-if="pedidoAjuda.length < minimoCaracteres">Restando {{ minimoCaracteres - pedidoAjuda.length}} caracteres.</small>
                             <small class="form-text text-muted">Sua conta não pode ser privada.</small>
                         </b-form-group>
 
@@ -48,6 +48,7 @@
             usernameInsta: '',
             confirmKey: '',
             doingRequest: false,
+            minimoCaracteres: 25
         }),
 
         methods: {
@@ -56,7 +57,7 @@
 
                 if (self.pedidoAjuda !== '') {
 
-                    if (self.pedidoAjuda.length > 140) {
+                    if (self.pedidoAjuda.length > self.minimoCaracteres) {
                         self.doingRequest = true;
                         let config = {
                             headers: {
