@@ -234,7 +234,7 @@
                         window.localStorage.setItem('user.new_likes', response.data.new_likes);
                         window.localStorage.setItem('user.points', response.data.points);
                         window.localStorage.setItem('user.pending_points', response.data.pending_points);
-                        self.$router.push('/home');
+                        self.$router.push('/adicionarconta');
                         self.doingRequest = false;
                     })
                     .catch(function (error) {
