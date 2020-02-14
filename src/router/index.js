@@ -34,6 +34,7 @@ export default new Router({
             component: () => import('../DemoPages/Dashboards/Analytics.vue'),
         },
 
+
         // Auth
 
         {
@@ -70,6 +71,12 @@ export default new Router({
             meta: {layout: 'userpages'},
             beforeEnter: isLoggedInBlock,
             component: () => import('../Pages/Auth/ResetPassword.vue'),
+        },
+        {
+            path: '/inicio',
+            name: 'Inicio',
+            meta: {layout: 'userpages'},
+            component: () => import('../DemoPages/UserPages/Inicio.vue'),
         },
 
         // Pages
