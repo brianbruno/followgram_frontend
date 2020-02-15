@@ -203,26 +203,29 @@
                     }
                 };
 
-                axios.post('https://insta.brian.place/api/insta/getPosts', {
-                    username: self.accounts[self.selectedAccountIndex].username,
-                }, config).then(function (response) {
-                    const postAccount = response.data.data;
-                    self.postsAccount = [];
-                    postAccount.forEach(function (account) {
-                        self.postsAccount.push(account)
-                    });
+                if (self.accounts.length > 0) {
 
-                    self.doingRequest = false;
-                }).catch(function (error) {
-                    new Noty({
-                        theme: 'mint',
-                        text: error.message,
-                        timeout: 2500,
-                        layout: 'topRight',
-                        type: 'error',
-                    }).show();
-                    self.doingRequest = false;
-                });
+                    axios.post('https://insta.brian.place/api/insta/getPosts', {
+                        username: self.accounts[self.selectedAccountIndex].username,
+                    }, config).then(function (response) {
+                        const postAccount = response.data.data;
+                        self.postsAccount = [];
+                        postAccount.forEach(function (account) {
+                            self.postsAccount.push(account)
+                        });
+
+                        self.doingRequest = false;
+                    }).catch(function (error) {
+                        new Noty({
+                            theme: 'mint',
+                            text: error.message,
+                            timeout: 2500,
+                            layout: 'topRight',
+                            type: 'error',
+                        }).show();
+                        self.doingRequest = false;
+                    });
+                }
             },
             getAccounts(selectAccount) {
                 const self = this;
@@ -243,12 +246,25 @@
                         self.accounts.push(account)
                     });
 
-                    if (selectAccount) {
-                        // Seleciona a última conta
-                        if (self.accounts.length > 0 && self.postSelectedIndex === -1) {
-                            self.selectAccount(self.accounts.length - 1)
+                    if (self.accounts.length > 0) {
+                        if (selectAccount) {
+                            // Seleciona a última conta
+                            if (self.accounts.length > 0 && self.postSelectedIndex === -1) {
+                                self.selectAccount(self.accounts.length - 1)
+                            }
                         }
+                    } else {
+                        new Noty({
+                            theme: 'mint',
+                            text: 'Você não possui nenhuma conta cadastrada. Adicione uma para começar a ganhar seguidores.',
+                            timeout: 2500,
+                            layout: 'topRight',
+                            type: 'error',
+                        }).show();
+                        self.$router.push('/adicionarconta')
                     }
+
+
 
                     self.doingRequest = false;
 
