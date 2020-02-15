@@ -145,6 +145,7 @@
                             layout: 'topRight',
                             type: 'error',
                         }).show();
+                        self.$router.push('/adicionarconta')
                     } else {
                         self.idInstaFollowing = self.accounts[self.accounts.length-1].id
                     }

@@ -65,6 +65,11 @@
                         href: '/adicionarconta',
                     },
                     {
+                        icon: 'pe-7s-id',
+                        title: 'Referidos',
+                        href: '/referidos',
+                    },
+                    {
                         header: true,
                         title: 'Suporte',
                     },
@@ -73,6 +78,11 @@
                         title: 'Ajuda',
                         href: '/queroajuda',
                     },
+                    {
+                        icon: 'pe-7s-cash',
+                        title: 'Extrato',
+                        href: '/extrato',
+                    }
                 ],
                 collapsed: true,
 

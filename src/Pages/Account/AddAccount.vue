@@ -40,7 +40,9 @@
                                 </h4>
                                 <br>
                                 <h6>
-                                    {{ confirmKey }}
+                                    <b-form-group id="confirmKey" prepend="@"  label-for="input_confirmKey" description=" ">
+                                        <b-form-input id="input_confirmKey" type="text" disabled v-model="confirmKey"></b-form-input>
+                                    </b-form-group>
                                 </h6>
                                 <br>
                                 <br>

@@ -59,6 +59,13 @@ export default new Router({
             component: () => import('../DemoPages/UserPages/RegisterBoxed.vue'),
         },
         {
+            path: '/r/:id?',
+            name: 'register-boxed',
+            meta: {layout: 'userpages'},
+            beforeEnter: isLoggedInBlock,
+            component: () => import('../Pages/Auth/Register.vue'),
+        },
+        {
             path: '/esquecisenha',
             name: 'forgot-password-boxed',
             meta: {layout: 'userpages'},
@@ -103,6 +110,18 @@ export default new Router({
             name: 'quero-ajuda',
             beforeEnter: isLoggedIn,
             component: () => import('../Pages/Help/Help.vue'),
+        },
+        {
+            path: '/referidos',
+            name: 'referidos',
+            beforeEnter: isLoggedIn,
+            component: () => import('../Pages/Account/Referred.vue'),
+        },
+        {
+            path: '/extrato',
+            name: 'extrato',
+            beforeEnter: isLoggedIn,
+            component: () => import('../Pages/Account/Extract.vue'),
         },
 
         // Elements
