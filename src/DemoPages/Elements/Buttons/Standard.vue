@@ -80,7 +80,7 @@
               <div class="card-body">
                 <h5 class="card-title">Block Level</h5>
                 <template v-for="size in ['sm','','lg']">
-                  <b-button block class="mr-2 mb-2" variant="primary" :size="size">
+                  <b-button block class="mr-2 mb-2" variant="secondary" :size="size">
                     Block {{size}}
                   </b-button>
                 </template>

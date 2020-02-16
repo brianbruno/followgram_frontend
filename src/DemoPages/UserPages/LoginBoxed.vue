@@ -31,6 +31,7 @@
                                                   type="password"
                                                   required
                                                   v-model="password"
+                                                  v-on:keyup.enter="login"
                                                   placeholder="Senha...">
                                     </b-form-input>
                                 </b-form-group>
@@ -40,7 +41,7 @@
                                 <div class="divider"/>
                                 <h6 class="mb-0">
                                     Não possui uma conta?
-                                    <router-link :to="{ path:  '/pages/register-boxed'}">
+                                    <router-link :to="{ path:  '/registro'}">
                                     <span class="text-primary">Registre-se agora</span>
                                     </router-link>
                                 </h6>

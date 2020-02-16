@@ -4,7 +4,7 @@
         <div class="content">
             <div class="row">
                 <div class="col-md-12" v-if="requests.length !== 0">
-                    <b-button type="button" v-on:click="getRequesters()" class="mr-2 mb-2 btn-hover-shine btn-transition float-right" variant="dark">Atualizar Tarefas</b-button>
+                    <b-button type="button" v-on:click="getRequesters()" class="mr-2 mb-2 btn-hover-shine btn-transition float-right" variant="primary">Atualizar</b-button>
                 </div>
             </div>
             <br>

@@ -129,6 +129,7 @@
                             layout: 'topRight',
                             type: 'error',
                         }).show();
+                        self.doingRequest = false;
                     }
 
                     if (self.email && self.password && self.password_confirmation) {

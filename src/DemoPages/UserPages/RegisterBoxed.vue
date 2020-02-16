@@ -65,10 +65,10 @@
                                 <div class="divider"/>
                                 <h6 class="mb-0">
                                     Já possui uma conta?
-                                    <router-link :to="{ path:  '/'}">
+                                    <router-link :to="{ path:  '/login'}">
                                     <span href="javascript:void(0);" class="text-primary">Login</span></router-link>
                                     <a>  |</a>
-                                    <router-link :to="{ path:  '/pages/forgot-password-boxed'}">
+                                    <router-link :to="{ path:  '/esquecisenha'}">
                                     <span class="text-primary"> Esqueci a senha </span></router-link>
                                 </h6>
                             </div>
