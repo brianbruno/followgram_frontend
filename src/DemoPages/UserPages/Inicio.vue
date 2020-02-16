@@ -33,11 +33,11 @@
                     <br>
                     <b-row>
                         <b-col class="d-block d-md-none">
-                                <router-link :to="{ path:  '/'}">
+                                <router-link :to="{ path:  '/login'}">
                                     <b-button block class="mr-2 mb-2" variant="secondary" size="lg">
                                     <span style="color: white;">Login</span></b-button>
                                 </router-link>
-                                <router-link :to="{ path:  '/pages/register-boxed'}">
+                                <router-link :to="{ path:  '/registro'}">
                                     <b-button block class="mr-2 mb-2" variant="secondary" size="lg">
                                     <span style="color: white;">Registrar-se</span>
                                 </b-button></router-link>
