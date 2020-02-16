@@ -3,6 +3,11 @@
         <vue-element-loading :active="doingRequest" spinner="bar-fade-scale"/>
         <div class="content">
             <div class="row">
+                <div class="col-md-12">
+                    <button type="button" v-on:click="getRequesters()" class="btn-shadow btn btn-primary float-right">Atualizar</button>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-4" v-bind:key="request.id" v-for="request in requests">
                     <div class="main-card shadow p-3 mb-5 bg-white rounded card">
                         <div class="card-header" v-if="request.type === 'follow'"><h5>Seguir @{{request.target_user_insta.username}} <div class="float-right"><i class="diamante icon-gradient bg-love-kiss pe-7s-diamond"></i> {{ request.points }}</div> </h5></div>
@@ -206,9 +211,13 @@
                     const requests = response.data.data;
                     self.show = [];
                     self.requests = [];
+                    requests.sort(() => Math.random() - 0.5);
                     requests.forEach(function (request) {
-                        self.show.push(request.id);
-                        self.requests.push(request)
+
+                        if (self.requests.length < 6) {
+                            self.show.push(request.id);
+                            self.requests.push(request)
+                        }
                     });
                     self.doingRequest = false;
 
