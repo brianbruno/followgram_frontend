@@ -33,20 +33,24 @@
                     <br>
                     <b-row>
                         <b-col class="d-block d-md-none">
-                                <router-link :to="{ path:  '/'}"><b-button block class="mr-2 mb-2" variant="secondary" size="lg">
+                                <router-link :to="{ path:  '/'}">
+                                    <b-button block class="mr-2 mb-2" variant="secondary" size="lg">
                                     <span style="color: white;">Login</span></b-button>
-                                    </b-button></router-link>
-                                <router-link :to="{ path:  '/pages/register-boxed'}"><b-button block class="mr-2 mb-2" variant="secondary" size="lg">
+                                </router-link>
+                                <router-link :to="{ path:  '/pages/register-boxed'}">
+                                    <b-button block class="mr-2 mb-2" variant="secondary" size="lg">
                                     <span style="color: white;">Registrar-se</span>
                                 </b-button></router-link>
                         </b-col>
                         <b-col class="d-none d-md-block">
-                            <router-link :to="{ path:  '/'}"><b-button class="mr-2" variant="secondary">
+                            <router-link :to="{ path:  '/login'}">
+                                <b-button class="mr-2" variant="secondary">
                                 <span style="color: white;">Login</span></b-button>
-                                </b-button></router-link>
-                            <router-link :to="{ path:  '/pages/register-boxed'}"><b-button class="mr-2" variant="secondary">
+                            </router-link>
+                            <router-link :to="{ path:  '/registro'}">
+                                <b-button class="mr-2" variant="secondary">
                                 <span style="color: white;">Registre-se</span></b-button>
-                                </b-button></router-link>
+                            </router-link>
 
                         </b-col>
                     </b-row>

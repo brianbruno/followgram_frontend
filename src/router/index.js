@@ -33,26 +33,24 @@ export default new Router({
             beforeEnter: isLoggedIn,
             component: () => import('../DemoPages/Dashboards/Analytics.vue'),
         },
-
+        {
+            path: '/',
+            name: 'Inicio',
+            meta: {layout: 'userpages'},
+            beforeEnter: isLoggedInBlock,
+            component: () => import('../DemoPages/UserPages/Inicio.vue'),
+        },
 
         // Auth
-
         {
-            path: '/',
+            path: '/login',
             name: 'login-boxed',
             meta: {layout: 'userpages'},
             beforeEnter: isLoggedInBlock,
             component: () => import('../DemoPages/UserPages/LoginBoxed.vue'),
         },
         {
-            path: '/',
-            name: 'login-boxed',
-            meta: {layout: 'userpages'},
-            beforeEnter: isLoggedInBlock,
-            component: () => import('../DemoPages/UserPages/LoginBoxed.vue'),
-        },
-        {
-            path: '/pages/register-boxed',
+            path: '/registro',
             name: 'register-boxed',
             meta: {layout: 'userpages'},
             beforeEnter: isLoggedInBlock,
@@ -78,12 +76,6 @@ export default new Router({
             meta: {layout: 'userpages'},
             beforeEnter: isLoggedInBlock,
             component: () => import('../Pages/Auth/ResetPassword.vue'),
-        },
-        {
-            path: '/inicio',
-            name: 'Inicio',
-            meta: {layout: 'userpages'},
-            component: () => import('../DemoPages/UserPages/Inicio.vue'),
         },
 
         // Pages
