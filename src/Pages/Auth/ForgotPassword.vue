@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="divider"/>
                                 <h6 class="mb-0">
-                                    <router-link :to="{ path: '/'}">
+                                    <router-link :to="{ path: '/login'}">
                                     <a class="text-primary">Entrar com uma conta existente</a></router-link>
                                 </h6>
                             </div>
