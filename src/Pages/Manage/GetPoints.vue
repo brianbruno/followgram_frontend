@@ -3,10 +3,11 @@
         <vue-element-loading :active="doingRequest" spinner="bar-fade-scale"/>
         <div class="content">
             <div class="row">
-                <div class="col-md-12">
-                    <button type="button" v-on:click="getRequesters()" class="btn-shadow btn btn-primary float-right">Atualizar</button>
+                <div class="col-md-12" v-if="requests.length !== 0">
+                    <b-button type="button" v-on:click="getRequesters()" class="mr-2 mb-2 btn-hover-shine btn-transition float-right" variant="dark">Atualizar Tarefas</b-button>
                 </div>
             </div>
+            <br>
             <div class="row">
                 <div class="col-md-4" v-bind:key="request.id" v-for="request in requests">
                     <div class="main-card shadow p-3 mb-5 bg-white rounded card">
