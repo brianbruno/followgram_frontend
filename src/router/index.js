@@ -41,6 +41,11 @@ export default new Router({
             beforeEnter: isLoggedInBlock,
             component: () => import('../DemoPages/UserPages/Inicio.vue'),
         },
+        {   path: "*",
+            meta: {layout: 'userpages'},
+            beforeEnter: isLoggedInBlock,
+            component: () => import('../DemoPages/UserPages/Inicio.vue'),
+        },
 
         // Auth
         {

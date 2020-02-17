@@ -10,9 +10,13 @@
                         <br><br><br>
                         <h4>Indique utilizando o link abaixo para ganhar diamantes!</h4>
                         <h5>Ganhe <i class="diamante icon-gradient bg-love-kiss pe-7s-diamond"></i> 50 para cada pessoa que se cadastrar utilizando seu link!</h5>
-                        <b-form-group id="urlRefer" prepend="@"  label-for="input_urlRefer" description=" ">
-                            <b-form-input id="input_urlRefer" type="email" disabled v-model="urlRefer"></b-form-input>
-                        </b-form-group>
+                        <input type="hidden" id="testing-code" :value="urlRefer">
+                        <div class="input-group">
+                            <input type="text" id="urlReferInput" class="form-control" v-model="urlRefer" disabled>
+                            <div class="input-group-append">
+                                <button class="btn btn-primary" v-on:click="copy"><i class="pe-7s-copy-file"></i></button>
+                            </div>
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <img src="https://gerenciagram.com.br/blog/wp-content/uploads/2019/02/biografia-no-instagram.jpg" class="table-responsive">
@@ -28,6 +32,7 @@
 <script>
 
     import PageTitle from "../../Layout/Components/PageTitle.vue";
+    const Noty = require('noty');
 
     export default {
         components: {
@@ -41,6 +46,39 @@
             const id = localStorage.getItem('user.id');
 
             this.urlRefer = this.urlRefer + id;
+        },
+        methods: {
+            copy () {
+                let testingCodeToCopy = document.querySelector('#testing-code');
+                testingCodeToCopy.setAttribute('type', 'text');
+                testingCodeToCopy.select();
+
+                try {
+                    const successful = document.execCommand('copy');
+                    const msg = successful ? 'Copiado.' : 'Não copiado.';
+
+                    new Noty({
+                        theme: 'mint',
+                        text: msg,
+                        timeout: 2500,
+                        layout: 'topRight',
+                        type: 'info',
+                    }).show();
+
+                } catch (err) {
+                    new Noty({
+                        theme: 'mint',
+                        text: 'Erro',
+                        timeout: 2500,
+                        layout: 'topRight',
+                        type: 'error',
+                    }).show();
+                }
+
+                /* unselect the range */
+                testingCodeToCopy.setAttribute('type', 'hidden');
+                window.getSelection().removeAllRanges()
+            }
         }
     }
 
