@@ -41,13 +41,13 @@
                                                     <button v-if="request.type === 'like'" type="button" v-on:click="ganharPontos(request.id, request.post_url)" class="btn-shadow btn btn-primary">Curtir</button>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <hr>
-                                                <!-- Exibido em celulares -->
-                                                <div role="group" class="btn-group-sm btn-group d-block d-md-none">
-                                                    <button v-if="request.type === 'follow'" type="button" v-on:click="ganharPontos(request.id, 'https://instagram.com/'+request.target_user_insta.username)" class="btn-shadow btn btn-primary">Seguir</button>
-                                                    <button v-if="request.type === 'like'" type="button" v-on:click="ganharPontos(request.id, request.post_url)" class="btn-shadow btn btn-primary">Curtir</button>
-                                                </div>
+                                        </div>
+                                        <div>
+                                            <br>
+                                            <!-- Exibido em celulares -->
+                                            <div role="group" class="btn-group-sm btn-group d-block d-md-none">
+                                                <b-button block v-if="request.type === 'follow'" type="button" v-on:click="ganharPontos(request.id, 'https://instagram.com/'+request.target_user_insta.username)" class="mr-2 mb-2" variant="primary" size="lg" ><font-awesome-icon icon="user-plus"/>  Seguir</b-button>
+                                                <b-button block v-if="request.type === 'like'" type="button" v-on:click="ganharPontos(request.id, request.post_url)" class="mr-2 mb-2" variant="primary" size="lg"><font-awesome-icon icon="heart"/>  Curtir</b-button>
                                             </div>
                                         </div>
                                     </div>
@@ -114,11 +114,15 @@
     const axios = require('axios');
     import {library} from '@fortawesome/fontawesome-svg-core'
     import {
-        faSync
+        faSync,
+        faUserPlus,
+        faHeart
     } from '@fortawesome/free-solid-svg-icons'
     import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
     library.add(
-        faSync
+        faSync,
+        faUserPlus,
+        faHeart
     );
 
     export default {
