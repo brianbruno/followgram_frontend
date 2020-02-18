@@ -79,6 +79,8 @@
             pending_points: 0,
         }),
         created: function () {
+            this.updatePoints();
+
             this.name = localStorage.getItem('user.name');
             this.points = localStorage.getItem('user.points');
             this.pending_points = localStorage.getItem('user.pending_points');
@@ -113,6 +115,7 @@
                         window.localStorage.removeItem('user.new_likes');
                         window.localStorage.removeItem('user.points');
                         window.localStorage.removeItem('user.pending_points');
+                        window.localStorage.removeItem('user.insta_id_active');
                         self.$router.push('/');
                     })
                     .catch(function () {
@@ -124,6 +127,7 @@
                         window.localStorage.removeItem('user.new_likes');
                         window.localStorage.removeItem('user.points');
                         window.localStorage.removeItem('user.pending_points');
+                        window.localStorage.removeItem('user.insta_id_active');
                         self.$router.push('/');
                     });
             },
@@ -144,6 +148,7 @@
                         window.localStorage.setItem('user.new_followers', response.data.new_followers);
                         window.localStorage.setItem('user.new_comments', response.data.new_comments);
                         window.localStorage.setItem('user.new_likes', response.data.new_likes);
+                        window.localStorage.setItem('user.insta_id_active', response.data.insta_id_active);
                         self.points = response.data.points;
                         self.pending_points = response.data.pending_points;
                     });
