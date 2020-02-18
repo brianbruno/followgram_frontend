@@ -123,8 +123,20 @@
                     axios.post('https://insta.brian.place/api/insta/adduser', {
                         username: self.usernameInsta,
                     }, config).then(function (response) {
-                        self.confirmKey = response.data.confirmKey;
-                        self.fase = 2;
+
+                        if (response.data.success) {
+                            self.confirmKey = response.data.confirmKey;
+                            self.fase = 2;
+                        } else {
+                            new Noty({
+                                theme: 'mint',
+                                text: response.data.message,
+                                timeout: 2500,
+                                layout: 'topRight',
+                                type: 'error',
+                            }).show();
+                        }
+
                         self.doingRequest = false;
                     }).catch(function (error) {
                         new Noty({
