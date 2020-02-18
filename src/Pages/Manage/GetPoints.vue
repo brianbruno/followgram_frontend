@@ -3,7 +3,7 @@
         <vue-element-loading :active="doingRequest" spinner="bar-fade-scale"/>
         <div class="content">
             <div class="row">
-                <div class="col-md-12" v-if="requests.length !== 0">
+                <div class="col-md-12">
                     <div class="input-group">
                         <select v-model="idInstaFollowing" v-on:change="changeActiveAccount" class="custom-select" id="inputGroupSelect04">
                             <option v-bind:key="account.id" v-for="account in accounts" :value="account.id">{{ account.username }}</option>
