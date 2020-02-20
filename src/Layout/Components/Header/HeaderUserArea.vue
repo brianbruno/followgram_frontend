@@ -6,6 +6,7 @@
                     <div class="widget-content-left">
                         <h4>
                             <span id="points">
+                                <span v-if="is_vip"><i class="pe-7s-star pe-2x icon-gradient bg-sunny-morning"> </i> VIP  </span>
                                 <span><i class="pe-7s-diamond pe-2x icon-gradient bg-love-kiss"> </i> </span>{{ points}}
                                 <i class="pe-7s-lock pe-2x icon-gradient bg-love-kiss"> </i> {{ pending_points }}
                             </span>
@@ -77,6 +78,7 @@
             name: '',
             points: 0,
             pending_points: 0,
+            is_vip: false
         }),
         created: function () {
             this.updatePoints();
@@ -116,6 +118,7 @@
                         window.localStorage.removeItem('user.points');
                         window.localStorage.removeItem('user.pending_points');
                         window.localStorage.removeItem('user.insta_id_active');
+                        window.localStorage.removeItem('user.is_vip');
                         self.$router.push('/');
                     })
                     .catch(function () {
@@ -128,6 +131,7 @@
                         window.localStorage.removeItem('user.points');
                         window.localStorage.removeItem('user.pending_points');
                         window.localStorage.removeItem('user.insta_id_active');
+                        window.localStorage.removeItem('user.is_vip');
                         self.$router.push('/');
                     });
             },
@@ -149,8 +153,10 @@
                         window.localStorage.setItem('user.new_comments', response.data.new_comments);
                         window.localStorage.setItem('user.new_likes', response.data.new_likes);
                         window.localStorage.setItem('user.insta_id_active', response.data.insta_id_active);
+                        window.localStorage.setItem('user.is_vip', response.data.is_vip);
                         self.points = response.data.points;
                         self.pending_points = response.data.pending_points;
+                        self.is_vip = response.data.is_vip;
                     });
             }
         }

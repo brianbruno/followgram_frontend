@@ -70,6 +70,11 @@
                         href: '/referidos',
                     },
                     {
+                        icon: 'pe-7s-star',
+                        title: 'VIP',
+                        href: '/vip',
+                    },
+                    {
                         header: true,
                         title: 'Suporte',
                     },

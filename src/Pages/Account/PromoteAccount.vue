@@ -338,9 +338,9 @@
                 if (this.accounts[accountIndex].instagram_requests[0]) {
                     this.pointsFollow = this.accounts[accountIndex].instagram_requests[0].points
                 } else {
-                    this.pointsFollow = "15";
+                    this.pointsFollow = "20";
                 }
-                this.pointsLike = "15";
+                this.pointsLike = "10";
                 this.getPosts();
                 this.selectPost(-1);
 
@@ -404,12 +404,19 @@
 
                 const postsMade = this.accounts[this.selectedAccountIndex].instagram_requests.filter((item) => { return item.type === 'like'});
 
-                if (postsMade.length <= 10) {
+                const is_vip = window.localStorage.getItem('user.is_vip');
+                let max_posts = 5;
+
+                if (is_vip === "true") {
+                    max_posts = 10;
+                }
+
+                if (postsMade.length <= max_posts) {
                     this.postSelectedIndex = indexSelectedPost;
                 } else {
                     new Noty({
                         theme: 'mint',
-                        text: 'Você só pode promover 10 posts por conta ao mesmo tempo.',
+                        text: 'Você só pode promover ' + max_posts + ' posts por conta ao mesmo tempo.',
                         timeout: 2500,
                         layout: 'topRight',
                         type: 'warning',
