@@ -64,7 +64,7 @@ export default new Router({
         },
         {
             path: '/r/:id?',
-            name: 'register-boxed',
+            name: 'refer',
             meta: {layout: 'userpages'},
             beforeEnter: isLoggedInBlock,
             component: () => import('../Pages/Auth/Register.vue'),
@@ -120,6 +120,12 @@ export default new Router({
             name: 'extrato',
             beforeEnter: isLoggedIn,
             component: () => import('../Pages/Account/Extract.vue'),
+        },
+        {
+            path: '/vip',
+            name: 'vip',
+            beforeEnter: isLoggedIn,
+            component: () => import('../Pages/Account/Vip.vue'),
         },
 
         // Elements

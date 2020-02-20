@@ -17,9 +17,9 @@
             <br>
             <div class="row">
                 <div class="col-sm-12 col-md-6 col-lg-4" v-bind:key="request.id" v-for="request in requests">
-                    <div class="main-card shadow p-3 mb-5 bg-white rounded card">
-                        <div class="card-header" v-if="request.type === 'follow'"><h5>Seguir @{{request.target_user_insta.username}} <div class="float-right"><i class="diamante icon-gradient bg-love-kiss pe-7s-diamond"></i> {{ request.points }}</div> </h5></div>
-                        <div class="card-header" v-if="request.type === 'like'"><h5>Curtir foto de @{{request.target_user_insta.username}} <div class="float-right"><i class="diamante icon-gradient bg-love-kiss pe-7s-diamond"></i> {{ request.points }}</div></h5></div>
+                    <div class="main-card shadow p-3 mb-5 bg-white rounded card" v-bind:class="{ 'border-warning': request.is_vip }">
+                        <div class="card-header" v-if="request.type === 'follow'"><h5>Seguir @{{request.target_user_insta.username}} <div class="float-right d-none d-sm-none d-md-block"><i class="diamante icon-gradient bg-love-kiss pe-7s-diamond"></i> {{ request.points }}  <span v-if="request.is_vip"><b-badge variant="warning" >VIP</b-badge></span></div> </h5></div>
+                        <div class="card-header" v-if="request.type === 'like'"><h5>Curtir foto de @{{request.target_user_insta.username}} <div class="float-right d-none d-sm-none d-md-block"><i class="diamante icon-gradient bg-love-kiss pe-7s-diamond"></i> {{ request.points }} <span v-if="request.is_vip"><b-badge variant="warning" >VIP</b-badge></span></div></h5></div>
                         <div class="card-header" v-if="request.type === 'comment'"><h5>Comentar</h5> <div class="float-right"><i class="diamante icon-gradient bg-love-kiss pe-7s-diamond"></i> {{ request.points }}</div> </div>
                         <div class="card-body">
                             <ul class="list-group list-group-flush">
@@ -32,7 +32,7 @@
                                             </div>
                                             <div class="widget-content-left">
                                                 <div class="widget-heading">{{ request.target_user_insta.full_name}}</div>
-                                                <div class="widget-subheading">{{ request.points }} Pontos</div>
+                                                <div class="widget-subheading">{{ request.points }} Diamantes</div>
                                             </div>
                                             <div class="widget-content-right">
                                                 <!-- Exibido em computadores -->
@@ -43,6 +43,13 @@
                                             </div>
                                         </div>
                                         <div>
+                                            <br>
+                                            <!-- Exibido em celulares -->
+                                            <div class="d-block d-md-none text-center">
+                                                <h4><div v-if="request.type === 'follow'"><i class="diamante icon-gradient bg-love-kiss pe-7s-diamond"></i> {{ request.points }} <span v-if="request.is_vip"><b-badge variant="warning" >VIP</b-badge></span></div></h4>
+                                                <h4><div v-if="request.type === 'like'"><i class="diamante icon-gradient bg-love-kiss pe-7s-diamond"></i> {{ request.points }} <span v-if="request.is_vip"><b-badge variant="warning" >VIP</b-badge></span></div></h4>
+                                                <small><div class="text-black-50" v-if="request.is_vip && request.type === 'follow'">Você pode ser punido se deixar de seguir</div></small>
+                                            </div>
                                             <br>
                                             <!-- Exibido em celulares -->
                                             <div role="group" class="btn-group-sm btn-group d-block d-md-none">
