@@ -127,6 +127,12 @@ export default new Router({
             beforeEnter: isLoggedIn,
             component: () => import('../Pages/Account/Vip.vue'),
         },
+        {
+            path: '/paineladm',
+            name: 'painel-adm',
+            beforeEnter: isLoggedIn,
+            component: () => import('../Pages/Admin/Dashboard.vue'),
+        },
 
         // Elements
 
