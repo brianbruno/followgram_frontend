@@ -20,7 +20,6 @@ const isLoggedInBlock = (to, from, next) => {
 };
 
 export default new Router({
-    mode: 'history',
     scrollBehavior() {
         return window.scrollTo({ top: 0, behavior: 'smooth' });
     },

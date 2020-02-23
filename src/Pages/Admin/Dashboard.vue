@@ -24,6 +24,9 @@
                             ></b-pagination>
                         </b-col>
                     </div>
+                    <div class="col-md-6 col-sm-12">
+                        <TaskDay :height="250"></TaskDay>
+                    </div>
 
                 </div>
             </div>
@@ -46,6 +49,7 @@
         faCheck
     } from '@fortawesome/free-solid-svg-icons'
     import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+    import TaskDay from './Charts/TasksDay'
 
     library.add(
         faTrashAlt,
@@ -57,6 +61,7 @@
             PageTitle,
             VuePerfectScrollbar,
             'font-awesome-icon': FontAwesomeIcon,
+            TaskDay
         },
         data: () => ({
             points: [],

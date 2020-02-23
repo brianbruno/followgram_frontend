@@ -39,7 +39,7 @@
             PageTitle,
         },
         data: () => ({
-            urlRefer: 'https://ganheseguidores.com/r/',
+            urlRefer: 'https://ganheseguidores.com/#/r/',
             doingRequest: false,
         }),
         created: function () {
