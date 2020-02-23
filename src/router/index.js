@@ -20,7 +20,6 @@ const isLoggedInBlock = (to, from, next) => {
 };
 
 export default new Router({
-    mode: 'history',
     scrollBehavior() {
         return window.scrollTo({ top: 0, behavior: 'smooth' });
     },
@@ -126,6 +125,12 @@ export default new Router({
             name: 'vip',
             beforeEnter: isLoggedIn,
             component: () => import('../Pages/Account/Vip.vue'),
+        },
+        {
+            path: '/paineladm',
+            name: 'painel-adm',
+            beforeEnter: isLoggedIn,
+            component: () => import('../Pages/Admin/Dashboard.vue'),
         },
 
         // Elements
