@@ -25,6 +25,13 @@
                                                 <div class="widget-heading">{{ accounts[selectedAccountIndex].username }}</div>
                                                 <div class="widget-subheading">{{ accounts[selectedAccountIndex].biography }}</div>
                                             </div>
+                                            <div class="widget-content-right">
+
+                                                <b-button class="mr-2 mb-2 btn-transition" variant="outline-danger">
+                                                    <font-awesome-icon icon="trash-alt" size="1x" v-on:click="desabilitarConta"/>
+                                                </b-button>
+
+                                            </div>
                                         </div>
                                         <br><br>
                                         <div class="row">
@@ -154,9 +161,16 @@
     const Noty = require('noty');
     const axios = require('axios');
 
+    import {
+        faTrashAlt
+    } from '@fortawesome/free-solid-svg-icons'
+    import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+
     export default {
         components: {
             PageTitle,
+            faTrashAlt,
+            'font-awesome-icon': FontAwesomeIcon,
         },
         data: () => ({
             heading: 'Chart Boxes III',
@@ -440,6 +454,51 @@
                     if (response.data.success) {
                         self.doingRequest = false;
                         self.getAccounts(false);
+
+                        new Noty({
+                            theme: 'mint',
+                            text: response.data.message,
+                            timeout: 2500,
+                            layout: 'topRight',
+                            type: 'success',
+                        }).show();
+                    } else {
+                        new Noty({
+                            theme: 'mint',
+                            text: response.data.message,
+                            timeout: 2500,
+                            layout: 'topRight',
+                            type: 'error',
+                        }).show();
+                        self.doingRequest = false;
+                    }
+
+                }).catch(function (error) {
+                    new Noty({
+                        theme: 'mint',
+                        text: error.message,
+                        timeout: 2500,
+                        layout: 'topRight',
+                        type: 'error',
+                    }).show();
+                    self.doingRequest = false;
+                });
+            },
+            desabilitarConta() {
+                const self = this;
+
+                self.doingRequest = true;
+
+                let config = {
+                    headers: {
+                        Authorization: window.localStorage.getItem('access_token'),
+                    }
+                };
+
+                axios.post('https://insta.brian.place/api/requests/desabilitarconta', { idAccount: self.accounts[self.selectedAccountIndex].id }, config).then(function (response) {
+
+                    if (response.data.success) {
+                        self.getAccounts(true);
 
                         new Noty({
                             theme: 'mint',

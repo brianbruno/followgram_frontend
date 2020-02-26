@@ -31,25 +31,44 @@
 
                         <div class="row">
                             <div class="col-md-12">
-                                <h3>Quase lá!</h3>
+                                <h3>Estamos quase lá!</h3>
                                 <h4>
-                                    Copie e cole o texto a seguir (completo) nos comentários da sua <strong>última</strong> foto:
+                                    Siga a seguinte conta para confirmar sua conta:
                                 </h4>
-                                <h4>
-                                    Sua conta não pode ser privada.
-                                </h4>
-                                <br>
                                 <h6>
-                                    <b-form-group id="confirmKey" prepend="@"  label-for="input_confirmKey" description=" ">
-                                        <b-form-input id="input_confirmKey" type="text" disabled v-model="confirmKey"></b-form-input>
-                                    </b-form-group>
+                                    Iremos conferir se quem está cadastrando é realmente o dono da conta. Isso é importante pois <strong>não</strong> permitimos bots no sistema.
+                                </h6>
+                                <h6 class="text-black-50">
+                                    Caso você já siga, deixe de seguir e siga novamente para que o sistema contabilize.
                                 </h6>
                                 <br>
-                                <br>
-                                <br>
-                                <h5>
-                                    Você pode apagar o comentário logo após
-                                </h5>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item">
+                                        <div class="widget-content p-0">
+                                            <div class="widget-content-wrapper">
+                                                <div class="widget-content-left mr-3">
+                                                    <img width="100" class="rounded-circle" src="https://instagram.fymy1-1.fna.fbcdn.net/v/t51.2885-19/s150x150/83043130_268846050754095_2388778716030304256_n.jpg?_nc_ht=instagram.fymy1-1.fna.fbcdn.net&_nc_ohc=OxjWzslBVF8AX_KuPHW&oh=347a79fcaa414f6f679a76ecc61972ab&oe=5EF7DC6C" alt="request.target_user_insta.full_name">
+                                                </div>
+                                                <div class="widget-content-left">
+                                                    <div class="text-black-50">1- Acesse o perfil @marketingfollowgram.</div>
+                                                    <div class="text-black-50">2- Clique em seguir.</div>
+                                                    <div class="text-black-50">3- Você pode deixar de seguir após confirmar sua conta!</div>
+                                                    <br>
+                                                </div>
+
+                                            </div>
+                                            <div class="text-center">
+                                                <a class="btn" href="https://instagram.com/marketingfollowgram" target="_blank">
+                                                    <b-button block class="mr-2 mb-2" variant="light" size="lg" role="button">
+                                                        <span class="font-weight-bold">Acessar Perfil</span>
+                                                    </b-button>
+                                                </a>
+                                                <br>
+                                                <h4>Seguir utilizando a conta: <strong>{{ usernameInsta }}</strong></h4>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                         <div class="row">
@@ -105,7 +124,6 @@
             icon: 'pe-7s-wallet icon-gradient bg-plum-plate',
             fase: 1,
             usernameInsta: '',
-            confirmKey: '',
             doingRequest: false,
         }),
 
@@ -125,7 +143,6 @@
                     }, config).then(function (response) {
 
                         if (response.data.success) {
-                            self.confirmKey = response.data.confirmKey;
                             self.fase = 2;
                         } else {
                             new Noty({
@@ -171,7 +188,7 @@
                     }
                 };
 
-                axios.post('https://insta.brian.place/api/insta/confirm', {
+                axios.post('https://insta.brian.place/api/insta/confirm2', {
                     username: self.usernameInsta,
                 }, config).then(function (response) {
                     if (response.data.success) {
