@@ -12,7 +12,8 @@
         </div>
         <div class="app-sidebar-content">
             <VuePerfectScrollbar class="app-sidebar-scroll" v-once>
-                <sidebar-menu showOneChild :menu="menu"/>
+                <sidebar-menu showOneChild
+                              :menu="menu"/>
             </VuePerfectScrollbar>
         </div>
 
@@ -32,7 +33,6 @@
             return {
                 isOpen: false,
                 sidebarActive: false,
-
                 menu: [
 
                     {
@@ -46,7 +46,7 @@
                     },
                     {
                         icon: 'pe-7s-diamond',
-                        title: 'Ganhar Pontos',
+                        title: 'Ganhar Diamantes',
                         href: '/ganharpontos'
                     },
                     {
@@ -80,6 +80,11 @@
                         href: '/vip',
                     },
                     {
+                        icon: 'pe-7s-cash',
+                        title: 'Extrato',
+                        href: '/extrato',
+                    },
+                    {
                         header: true,
                         title: 'Suporte',
                     },
@@ -87,11 +92,6 @@
                         icon: 'pe-7s-help1',
                         title: 'Ajuda',
                         href: '/queroajuda',
-                    },
-                    {
-                        icon: 'pe-7s-cash',
-                        title: 'Extrato',
-                        href: '/extrato',
                     }
                 ],
                 collapsed: true,
@@ -147,7 +147,35 @@
 
                 //Init
                 this.getWindowWidth()
-            })
+            });
+
+            const isAdmin = window.localStorage.getItem('user.is_admin') === "true";
+
+            if (isAdmin) {
+                this.menu.push(
+                    {
+                        header: true,
+                        title: 'Administração'
+                    }
+                );
+
+                this.menu.push(
+                    {
+                        icon: 'pe-7s-graph3',
+                        title: 'Painel',
+                        href: '/paineladm'
+                    }
+                );
+
+                this.menu.push(
+                    {
+                        icon: 'pe-7s-settings',
+                        title: 'Configurações',
+                        href: '/configuracoes'
+                    }
+                );
+
+            }
         },
 
         beforeDestroy() {

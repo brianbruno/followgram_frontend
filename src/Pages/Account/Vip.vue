@@ -2,10 +2,10 @@
     <div>
         <vue-element-loading :active="doingRequest" spinner="bar-fade-scale"/>
         <div class="main-card mb-3 card">
-            <div class="card-body">
+            <div v-if="isVip === false" class="card-body">
                 <h3 class="card-title">Ganhe Seguidores - VIP</h3>
 
-                <div class="row" >
+                <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <h6>Confira os benefícios para quem é VIP</h6>
 
@@ -54,6 +54,15 @@
 
                 </div>
             </div>
+            <div v-if="isVip" class="card-body">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <b-button class="mr-2 mb-2 btn-hover-shine btn-transition" variant="focus" v-on:click="punirUnfollow">
+                            Obter de volta os pontos dados a pessoas que te deram unfollow
+                        </b-button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -72,9 +81,11 @@
         data: () => ({
             extract: [],
             doingRequest: false,
+            isVip: false,
         }),
         created: function () {
-
+            this.isVip = window.localStorage.getItem('user.is_vip')
+            this.isVip = this.isVip === 'true';
         },
         methods: {
             adquirirVIP() {
@@ -89,6 +100,7 @@
                 axios.post('https://insta.brian.place/api/vip/buyvip', {}, config).then(function (response) {
 
                     if (response.data.success) {
+                        self.isVip = true;
                         new Noty({
                             theme: 'mint',
                             text: response.data.message,
@@ -119,6 +131,48 @@
                 });
 
             },
+            punirUnfollow() {
+                const self = this;
+
+                self.doingRequest = true;
+                let config = {
+                    headers: {
+                        Authorization: window.localStorage.getItem('access_token'),
+                    }
+                };
+                axios.post('https://insta.brian.place/api/vip/punirunfollow', {}, config).then(function (response) {
+
+                    if (response.data.success) {
+                        self.isVip = true;
+                        new Noty({
+                            theme: 'mint',
+                            text: response.data.message,
+                            timeout: 2500,
+                            layout: 'topRight',
+                            type: 'success',
+                        }).show();
+                    } else {
+                        new Noty({
+                            theme: 'mint',
+                            text: response.data.message,
+                            timeout: 2500,
+                            layout: 'topRight',
+                            type: 'error',
+                        }).show();
+                    }
+
+                    self.doingRequest = false;
+                }).catch(function (error) {
+                    new Noty({
+                        theme: 'mint',
+                        text: error.message,
+                        timeout: 2500,
+                        layout: 'topRight',
+                        type: 'error',
+                    }).show();
+                    self.doingRequest = false;
+                });
+            }
         }
     }
 
