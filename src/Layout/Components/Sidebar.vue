@@ -46,7 +46,7 @@
                     },
                     {
                         icon: 'pe-7s-diamond',
-                        title: 'Ganhar Pontos',
+                        title: 'Ganhar Diamantes',
                         href: '/ganharpontos'
                     },
                     {
@@ -142,7 +142,35 @@
 
                 //Init
                 this.getWindowWidth()
-            })
+            });
+
+            const isAdmin = window.localStorage.getItem('user.is_admin') === "true";
+
+            if (isAdmin) {
+                this.menu.push(
+                    {
+                        header: true,
+                        title: 'Administração'
+                    }
+                );
+
+                this.menu.push(
+                    {
+                        icon: 'pe-7s-graph3',
+                        title: 'Painel',
+                        href: '/paineladm'
+                    }
+                );
+
+                this.menu.push(
+                    {
+                        icon: 'pe-7s-settings',
+                        title: 'Configurações',
+                        href: '/configuracoes'
+                    }
+                );
+
+            }
         },
 
         beforeDestroy() {
