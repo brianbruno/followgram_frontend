@@ -65,6 +65,7 @@
                                                 </a>
                                                 <br>
                                                 <h4>Seguir utilizando a conta: <strong>{{ usernameInsta }}</strong></h4>
+                                                <span class="text-black-50">O sistema irá verificar se você realmente seguiu, ok?</span>
                                             </div>
                                         </div>
                                     </li>
@@ -73,7 +74,7 @@
                         </div>
                         <div class="row">
                             <div class="col-md-12">
-                                <b-button class="2 mb-2 btn-hover-shine btn-transition float-right" variant="focus" :disabled="doingRequest" v-on:click="avancarFase2">Confirmar</b-button>
+                                <b-button class="2 mb-2 btn-hover-shine btn-transition float-right" variant="focus" :disabled="doingRequest || secondsWaiting > 0" v-on:click="avancarFase2"><span v-if="secondsWaiting > 0">Aguarde ({{ secondsWaiting }})</span><span v-if="secondsWaiting === 0">Confirmar</span></b-button>
                                 <b-button class="mr-2 mb-2 border-0 btn-transition float-right" variant="outline-secondary" v-on:click="voltarFase1" :disabled="doingRequest">Voltar</b-button>
                             </div>
                         </div>
@@ -123,10 +124,18 @@
             subheading: 'Highly configurable boxes best used for showing numbers in an user friendly way.',
             icon: 'pe-7s-wallet icon-gradient bg-plum-plate',
             fase: 1,
+            tries: 0,
             usernameInsta: '',
+            secondsWaiting: 0,
             doingRequest: false,
         }),
-
+        mounted() {
+            setInterval(() => {
+                if (this.secondsWaiting > 0) {
+                    this.secondsWaiting--;
+                }
+            }, 1000)
+        },
         methods: {
             avancarFase1() {
                 const self = this;
@@ -180,44 +189,58 @@
             avancarFase2() {
                 const self = this;
 
-                self.doingRequest = true;
+                if (self.secondsWaiting === 0) {
 
-                let config = {
-                    headers: {
-                        Authorization: window.localStorage.getItem('access_token'),
-                    }
-                };
+                    self.doingRequest = true;
+                    self.tries++;
 
-                axios.post('https://insta.brian.place/api/insta/confirm2', {
-                    username: self.usernameInsta,
-                }, config).then(function (response) {
-                    if (response.data.success) {
-                        self.fase = 3;
-                    } else {
+                    let config = {
+                        headers: {
+                            Authorization: window.localStorage.getItem('access_token'),
+                        }
+                    };
+
+                    axios.post('https://insta.brian.place/api/insta/confirm2', {
+                        username: self.usernameInsta,
+                    }, config).then(function (response) {
+                        if (response.data.success) {
+                            self.fase = 3;
+                        } else {
+                            self.secondsWaiting = self.tries * 10;
+                            new Noty({
+                                theme: 'mint',
+                                text: response.data.message,
+                                timeout: 2500,
+                                layout: 'topRight',
+                                type: 'error',
+                            }).show();
+                        }
+
+                        self.doingRequest = false;
+                    }).catch(function (error) {
                         new Noty({
                             theme: 'mint',
-                            text: response.data.message,
+                            text: error.message,
                             timeout: 2500,
                             layout: 'topRight',
                             type: 'error',
                         }).show();
-                    }
-
-                    self.doingRequest = false;
-                }).catch(function (error) {
+                        self.doingRequest = false;
+                    });
+                } else {
                     new Noty({
                         theme: 'mint',
-                        text: error.message,
-                        timeout: 2500,
+                        text: 'Aguarde ' + self.secondsWaiting + ' segundos para tentar novamente',
+                        timeout: 1500,
                         layout: 'topRight',
-                        type: 'error',
+                        type: 'warning',
                     }).show();
-                    self.doingRequest = false;
-                });
+                }
+
+
             },
             reiniciarProcesso() {
                 this.fase = 1;
-                this.confirmKey = '';
                 this.usernameInsta = '';
             },
             voltarFase1() {
