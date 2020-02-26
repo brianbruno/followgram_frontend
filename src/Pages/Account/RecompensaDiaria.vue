@@ -123,8 +123,7 @@
                 {
                     tipo: 'vip',
                     nome: 'Sétimo dia',
-                    premio: '180 diamantes',
-                    imagem: 'https://i.imgur.com/Z4Jh8Gq.png',
+                    imagem: 'https://i.imgur.com/3Emh30E.png',
                     sub_imagem: 'https://i.imgur.com/VqrHNuY.png'
                 },
             ]
