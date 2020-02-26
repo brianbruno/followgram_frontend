@@ -75,6 +75,11 @@
                         href: '/vip',
                     },
                     {
+                        icon: 'pe-7s-cash',
+                        title: 'Extrato',
+                        href: '/extrato',
+                    },
+                    {
                         header: true,
                         title: 'Suporte',
                     },
@@ -82,11 +87,6 @@
                         icon: 'pe-7s-help1',
                         title: 'Ajuda',
                         href: '/queroajuda',
-                    },
-                    {
-                        icon: 'pe-7s-cash',
-                        title: 'Extrato',
-                        href: '/extrato',
                     }
                 ],
                 collapsed: true,
