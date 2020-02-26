@@ -127,6 +127,12 @@ export default new Router({
             beforeEnter: isLoggedIn,
             component: () => import('../Pages/Account/Vip.vue'),
         },
+        {
+            path: '/recompensadiaria',
+            name: 'recompensa',
+            beforeEnter: isLoggedIn,
+            component: () => import('../Pages/Account/RecompensaDiaria.vue'),
+        },
 
         // Elements
 
