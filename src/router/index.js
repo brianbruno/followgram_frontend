@@ -19,6 +19,41 @@ const isLoggedInBlock = (to, from, next) => {
     }
 };
 
+const isAdmin = (to, from, next) => {
+    const axios = require('axios');
+    const Noty = require('noty');
+
+    if (!localStorage.getItem('access_token')) {
+        next('/');
+    } else {
+
+        let config = {
+            headers: {
+                Authorization: window.localStorage.getItem('access_token'),
+            }
+        };
+
+        new Noty({
+            theme: 'mint',
+            text: 'Aguarde...',
+            timeout: 1000,
+            layout: 'topRight',
+            type: 'warning',
+        }).show();
+
+        axios.post('https://insta.brian.place/api/auth/user', {}, config)
+            .then(function (response) {
+                if (response.data.is_admin) {
+                    next();
+                } else {
+                    next('/home');
+                }
+            }).catch(() => {
+            next('/home');
+        });
+    }
+};
+
 export default new Router({
     scrollBehavior() {
         return window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -129,8 +164,14 @@ export default new Router({
         {
             path: '/paineladm',
             name: 'painel-adm',
-            beforeEnter: isLoggedIn,
+            beforeEnter: isAdmin,
             component: () => import('../Pages/Admin/Dashboard.vue'),
+        },
+        {
+            path: '/configuracoes',
+            name: 'configuracoes',
+            beforeEnter: isAdmin,
+            component: () => import('../Pages/Admin/Settings.vue')
         },
 
         // Elements
