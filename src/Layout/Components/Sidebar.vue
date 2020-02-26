@@ -70,6 +70,11 @@
                         href: '/referidos',
                     },
                     {
+                        icon: 'pe-7s-gift',
+                        title: 'Recompensa Diária',
+                        href: '/recompensadiaria',
+                    },
+                    {
                         icon: 'pe-7s-star',
                         title: 'VIP',
                         href: '/vip',

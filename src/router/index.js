@@ -162,6 +162,12 @@ export default new Router({
             component: () => import('../Pages/Account/Vip.vue'),
         },
         {
+            path: '/recompensadiaria',
+            name: 'recompensa',
+            beforeEnter: isLoggedIn,
+            component: () => import('../Pages/Account/RecompensaDiaria.vue'),
+        },
+        {
             path: '/paineladm',
             name: 'painel-adm',
             beforeEnter: isAdmin,
