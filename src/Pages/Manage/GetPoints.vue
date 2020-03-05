@@ -53,8 +53,8 @@
                                             <br>
                                             <!-- Exibido em celulares -->
                                             <div role="group" class="btn-group-sm btn-group d-block d-md-none">
-                                                <b-button block v-if="request.type === 'follow'" type="button" v-on:click="ganharPontos(request.id, 'https://instagram.com/'+request.target_user_insta.username)" class="mr-2 mb-2" variant="primary" size="lg" ><font-awesome-icon icon="user-plus"/>  Seguir</b-button>
-                                                <b-button block v-if="request.type === 'like'" type="button" v-on:click="ganharPontos(request.id, request.post_url)" class="mr-2 mb-2" variant="primary" size="lg"><font-awesome-icon icon="heart"/>  Curtir</b-button>
+                                                <a v-if="request.type === 'follow'" target="_blank" :href="'https://instagram.com/'+request.target_user_insta.username"><b-button block type="button" v-on:click="ganharPontosMobile(request.id)" class="mr-2 mb-2" variant="primary" size="lg" ><font-awesome-icon icon="user-plus"/>  Seguir</b-button></a>
+                                                <a v-if="request.type === 'like'" target="_blank" :href="request.post_url"><b-button block type="button" v-on:click="ganharPontosMobile(request.id)" class="mr-2 mb-2" variant="primary" size="lg"><font-awesome-icon icon="heart"/>  Curtir</b-button></a>
                                             </div>
                                         </div>
                                     </div>
@@ -226,7 +226,7 @@
                     self.openedPage = window.open(url, '_blank');
                     self.openedPage.focus();
                 } else {
-                    window.open(url, '_blank');
+                    // window.open(url, '_blank');
                     new Noty({
                         theme: 'mint',
                         text: 'Não se esqueça de confirmar a realização da ação. :)',
@@ -236,6 +236,26 @@
                     }).show();
                     self.doingRequest = false;
                 }
+            },
+            ganharPontosMobile(id){
+                const self = this;
+                const bkp = self.show;
+                self.show = [];
+
+                bkp.forEach(function (requestId) {
+                    if (requestId !== id) {
+                        self.show.push(requestId);
+                    }
+                });
+
+                new Noty({
+                    theme: 'mint',
+                    text: 'Não se esqueça de confirmar a realização da ação. :)',
+                    timeout: 2500,
+                    layout: 'topRight',
+                    type: 'info',
+                }).show();
+                self.doingRequest = false;
             },
             voltar(id){
                 this.show.push(id);
