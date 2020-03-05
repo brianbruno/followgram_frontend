@@ -10,36 +10,64 @@
     <url>
       <loc>https://ganheseguidores.com/</loc>
       <lastmod>2020-02-26T03:46:21+00:00</lastmod>
+      <changefreq>daily</changefreq>
+      <priority>1.0</priority>
+    </url>
+
+    <url>
+        <loc>https://ganheseguidores.com/#/login</loc>
+        <lastmod>2020-03-04T03:46:21+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <url>
+        <loc>https://ganheseguidores.com/#/registro</loc>
+        <lastmod>2020-03-04T03:46:21+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
     </url>
 
     <url>
         <loc>https://ganheseguidores.com/#/ganharpontos</loc>
         <lastmod>2020-02-26T03:46:21+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://ganheseguidores.com/#/promoverconta</loc>
         <lastmod>2020-02-26T03:46:21+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://ganheseguidores.com/#/adicionarconta</loc>
         <lastmod>2020-02-26T03:46:21+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://ganheseguidores.com/#/referidos</loc>
         <lastmod>2020-02-26T03:46:21+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://ganheseguidores.com/#/vip</loc>
         <lastmod>2020-02-26T03:46:21+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
     </url>
 
     <url>
         <loc>https://ganheseguidores.com/#/extrato</loc>
         <lastmod>2020-02-26T03:46:21+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
     </url>
 
 
