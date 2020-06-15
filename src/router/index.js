@@ -1,18 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import store from '../store'
 
 Vue.use(Router);
 
 const isLoggedIn = (to, from, next) => {
-    if (!localStorage.getItem('access_token')) {
-        next('/');
-    } else {
+    if (store.getters.isAuthenticated) {
         next();
+    } else {
+        next('/');
     }
 };
 
 const isLoggedInBlock = (to, from, next) => {
-    if (localStorage.getItem('access_token')) {
+    if (store.getters.isAuthenticated) {
         next('/home');
     } else {
         next();
