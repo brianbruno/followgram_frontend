@@ -68,7 +68,7 @@
                 self.doingRequest = true;
 
                 if (self.email) {
-                    axios.post('https://insta.brian.place/api/password/create', {
+                    axios.post(process.env.VUE_APP_HOST + '/api/password/create', {
                         email: self.email
                     }).then(function (response) {
                             self.doingRequest = false;

@@ -1,9 +1,5 @@
 import Vue from 'vue'
-
 import router from './router'
-import store from './store'
-
-import VueAxios from './plugins/axios'
 
 import BootstrapVue from "bootstrap-vue"
 import VueAnalytics from "vue-analytics";
@@ -19,7 +15,6 @@ Vue.config.productionTip = false;
 
 Vue.component('VueElementLoading', VueElementLoading)
 
-Vue.use(VueAxios);
 Vue.use(BootstrapVue);
 Vue.use(VueAnalytics, {
     id: 'UA-157898643-1',
@@ -32,7 +27,6 @@ Vue.component('userpages-layout', Pages);
 new Vue({
   el: '#app',
   router,
-  store,
   template: '<App/>',
   components: { App }
 });

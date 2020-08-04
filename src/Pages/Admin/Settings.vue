@@ -94,7 +94,7 @@
                     }
                 };
 
-                axios.post('https://insta.brian.place/api/admin/getsettings', {}, config).then((response) => {
+                axios.post(process.env.VUE_APP_HOST + '/api/admin/getsettings', {}, config).then((response) => {
 
                     self.doingRequest = false;
 
@@ -131,7 +131,7 @@
                     }
                 };
 
-                axios.post('https://insta.brian.place/api/admin/savesettings', {
+                axios.post(process.env.VUE_APP_HOST + '/api/admin/savesettings', {
                     settings: self.settings
                 }, config).then((response) => {
                     self.doingRequest = false;

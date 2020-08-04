@@ -173,7 +173,7 @@
                     }
                 };
 
-                axios.post('https://insta.brian.place/api/insta/getAccounts', {
+                axios.post(process.env.VUE_APP_HOST + '/api/insta/getAccounts', {
                     username: self.usernameInsta,
                 }, config).then(function (response) {
                     const accounts = response.data.data;
@@ -269,7 +269,7 @@
                     }
                 };
 
-                axios.post('https://insta.brian.place/api/requests/get', {
+                axios.post(process.env.VUE_APP_HOST + '/api/requests/get', {
                     username: self.usernameInsta,
                 }, config).then(function (response) {
                     const requests = response.data.data;
@@ -330,7 +330,7 @@
                     }
                 };
 
-                axios.post('https://insta.brian.place/api/follow/addfollow', {
+                axios.post(process.env.VUE_APP_HOST + '/api/follow/addfollow', {
                     idQuest: idQuest,
                     idInstaFollowing: self.idInstaFollowing,
                     idFollowTarget: idFollowTarget
@@ -382,7 +382,7 @@
                     }
                 };
 
-                axios.post('https://insta.brian.place/api/photolike/photolike', {
+                axios.post(process.env.VUE_APP_HOST + '/api/photolike/photolike', {
                     idQuest: idQuest,
                     idInstaLiking: self.idInstaFollowing
                 }, config).then(function (response) {
@@ -431,7 +431,7 @@
                     }
                 };
 
-                axios.post('https://insta.brian.place/api/auth/activeaccount', {
+                axios.post(process.env.VUE_APP_HOST + '/api/auth/activeaccount', {
                     activeaccount: self.idInstaFollowing
                 }, config).then(function () {
                     self.doingRequest = false;

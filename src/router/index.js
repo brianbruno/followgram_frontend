@@ -1,19 +1,18 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import store from '../store'
 
 Vue.use(Router);
 
 const isLoggedIn = (to, from, next) => {
-    if (store.getters.isAuthenticated) {
-        next();
-    } else {
+    if (!localStorage.getItem('access_token')) {
         next('/');
+    } else {
+        next();
     }
 };
 
 const isLoggedInBlock = (to, from, next) => {
-    if (store.getters.isAuthenticated) {
+    if (localStorage.getItem('access_token')) {
         next('/home');
     } else {
         next();
@@ -42,7 +41,7 @@ const isAdmin = (to, from, next) => {
             type: 'warning',
         }).show();
 
-        axios.post('https://insta.brian.place/api/auth/user', {}, config)
+        axios.post(process.env.VUE_APP_HOST + '/api/auth/user', {}, config)
             .then(function (response) {
                 if (response.data.is_admin) {
                     next();

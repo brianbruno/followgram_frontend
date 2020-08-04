@@ -219,7 +219,7 @@
 
                 if (self.accounts.length > 0) {
 
-                    axios.post('https://insta.brian.place/api/insta/getPosts', {
+                    axios.post(process.env.VUE_APP_HOST + '/api/insta/getPosts', {
                         username: self.accounts[self.selectedAccountIndex].username,
                     }, config).then(function (response) {
                         const postAccount = response.data.data;
@@ -251,7 +251,7 @@
                     }
                 };
 
-                axios.post('https://insta.brian.place/api/insta/getAccounts', {
+                axios.post(process.env.VUE_APP_HOST + '/api/insta/getAccounts', {
                     username: self.usernameInsta,
                 }, config).then(function (response) {
                     const accounts = response.data.data;
@@ -307,7 +307,7 @@
 
                 const active = self.accounts[self.selectedAccountIndex].is_request_follow;
 
-                axios.post('https://insta.brian.place/api/requests/add', {
+                axios.post(process.env.VUE_APP_HOST + '/api/requests/add', {
                         idInstaTarget: idInstaTarget,
                         type: 'follow',
                         points: self.pointsFollow,
@@ -373,7 +373,7 @@
                 //const active = self.accounts[self.selectedAccountIndex].is_request_like;
                 const active = true;
 
-                axios.post('https://insta.brian.place/api/requests/add', {
+                axios.post(process.env.VUE_APP_HOST + '/api/requests/add', {
                     idInstaTarget: idInstaTarget,
                     type: 'like',
                     post_url: self.postsAccount[self.postSelectedIndex].link,
@@ -449,7 +449,7 @@
                     }
                 };
 
-                axios.post('https://insta.brian.place/api/requests/deletelikerequest', { idRequest: id }, config).then(function (response) {
+                axios.post(process.env.VUE_APP_HOST + '/api/requests/deletelikerequest', { idRequest: id }, config).then(function (response) {
 
                     if (response.data.success) {
                         self.doingRequest = false;
@@ -495,7 +495,7 @@
                     }
                 };
 
-                axios.post('https://insta.brian.place/api/requests/desabilitarconta', { idAccount: self.accounts[self.selectedAccountIndex].id }, config).then(function (response) {
+                axios.post(process.env.VUE_APP_HOST + '/api/requests/desabilitarconta', { idAccount: self.accounts[self.selectedAccountIndex].id }, config).then(function (response) {
 
                     if (response.data.success) {
                         self.getAccounts(true);
