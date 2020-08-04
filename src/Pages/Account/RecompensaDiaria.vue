@@ -146,7 +146,7 @@
                         Authorization: window.localStorage.getItem('access_token'),
                     }
                 };
-                axios.post('https://insta.brian.place/api/reward/getreward', {}, config).then(function (response) {
+                axios.post(process.env.VUE_APP_HOST + '/api/reward/getreward', {}, config).then(function (response) {
                     self.getDayReward();
                     if (response.data.success) {
                         new Noty({
@@ -187,7 +187,7 @@
                         Authorization: window.localStorage.getItem('access_token'),
                     }
                 };
-                axios.post('https://insta.brian.place/api/reward/getdayreward', {}, config).then(function (response) {
+                axios.post(process.env.VUE_APP_HOST + '/api/reward/getdayreward', {}, config).then(function (response) {
 
                     if (response.data.success) {
                         self.day = response.data.day;

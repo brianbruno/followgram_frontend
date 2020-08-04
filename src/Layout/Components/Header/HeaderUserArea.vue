@@ -107,7 +107,7 @@
                     }
                 };
 
-                axios.get('https://insta.brian.place/api/auth/logout', config)
+                axios.get(process.env.VUE_APP_HOST + '/api/auth/logout', config)
                     .then(function () {
                         window.localStorage.removeItem('access_token');
                         window.localStorage.removeItem('user.id');
@@ -150,7 +150,7 @@
                     }
                 };
 
-                axios.post('https://insta.brian.place/api/auth/user', {}, config)
+                axios.post(process.env.VUE_APP_HOST + '/api/auth/user', {}, config)
                     .then(function (response) {
                         window.localStorage.setItem('user.id', response.data.id);
                         window.localStorage.setItem('user.points', response.data.points);

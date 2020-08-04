@@ -64,7 +64,7 @@
                                 Authorization: window.localStorage.getItem('access_token'),
                             }
                         };
-                        axios.post('https://insta.brian.place/api/help/add', {
+                        axios.post(process.env.VUE_APP_HOST + '/api/help/add', {
                             textHelp: self.pedidoAjuda,
                         }, config).then(function (response) {
 

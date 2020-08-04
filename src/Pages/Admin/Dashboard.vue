@@ -87,7 +87,7 @@
 
                 self.currentPage = ctx.currentPage;
 
-                return axios.get('https://insta.brian.place/api/admin/getpointsdata?page='+ctx.currentPage, config).then((response) => {
+                return axios.get(process.env.VUE_APP_HOST + '/api/admin/getpointsdata?page='+ctx.currentPage, config).then((response) => {
                     self.doingRequest = false;
                     self.totalRows = response.data.data.total
 

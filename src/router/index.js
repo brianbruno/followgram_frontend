@@ -41,7 +41,7 @@ const isAdmin = (to, from, next) => {
             type: 'warning',
         }).show();
 
-        axios.post('https://insta.brian.place/api/auth/user', {}, config)
+        axios.post(process.env.VUE_APP_HOST + '/api/auth/user', {}, config)
             .then(function (response) {
                 if (response.data.is_admin) {
                     next();
