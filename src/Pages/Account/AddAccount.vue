@@ -147,7 +147,7 @@
                             Authorization: window.localStorage.getItem('access_token'),
                         }
                     };
-                    axios.post('https://insta.brian.place/api/insta/adduser', {
+                    axios.post(process.env.VUE_APP_HOST+'/api/insta/adduser', {
                         username: self.usernameInsta,
                     }, config).then(function (response) {
 
@@ -200,7 +200,7 @@
                         }
                     };
 
-                    axios.post('https://insta.brian.place/api/insta/confirm2', {
+                    axios.post(process.env.VUE_APP_HOST+'/api/insta/confirm2', {
                         username: self.usernameInsta,
                     }, config).then(function (response) {
                         if (response.data.success) {

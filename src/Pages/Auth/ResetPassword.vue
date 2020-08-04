@@ -93,7 +93,7 @@
                 self.doingRequest = true;
 
                 if (self.email && self.password && (self.password === self.password_confirmation)) {
-                    axios.post('https://insta.brian.place/api/password/reset', {
+                    axios.post(process.env.VUE_APP_HOST+'/api/password/reset', {
                         email: self.email,
                         password: self.password,
                         password_confirmation: self.password_confirmation,

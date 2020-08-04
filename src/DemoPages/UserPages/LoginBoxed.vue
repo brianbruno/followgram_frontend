@@ -85,7 +85,7 @@
             self.doingRequest = true;
 
             if (self.email && self.password) {
-                axios.post('https://insta.brian.place/api/auth/login', {
+                axios.post(process.env.VUE_APP_HOST+'/api/auth/login', {
                     email: self.email,
                     password: self.password,
                     remember_me: !!self.remember_me
@@ -126,7 +126,7 @@
                 }
             };
 
-            axios.post('https://insta.brian.place/api/auth/user', {}, config)
+            axios.post(process.env.VUE_APP_HOST+'/api/auth/user', {}, config)
                 .then(function (response) {
                     self.doingRequest = false;
                     window.localStorage.setItem('user.id', response.data.id);

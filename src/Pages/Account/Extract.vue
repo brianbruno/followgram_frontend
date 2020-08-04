@@ -78,7 +78,7 @@
                         Authorization: window.localStorage.getItem('access_token'),
                     }
                 };
-                axios.post('https://insta.brian.place/api/auth/extract', {}, config).then(function (response) {
+                axios.post(process.env.VUE_APP_HOST+'/api/auth/extract', {}, config).then(function (response) {
                     self.extract = response.data.data;
 
                     self.doingRequest = false;

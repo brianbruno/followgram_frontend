@@ -97,7 +97,7 @@
                         Authorization: window.localStorage.getItem('access_token'),
                     }
                 };
-                axios.post('https://insta.brian.place/api/vip/buyvip', {}, config).then(function (response) {
+                axios.post(process.env.VUE_APP_HOST+'/api/vip/buyvip', {}, config).then(function (response) {
 
                     if (response.data.success) {
                         self.isVip = true;
@@ -140,7 +140,7 @@
                         Authorization: window.localStorage.getItem('access_token'),
                     }
                 };
-                axios.post('https://insta.brian.place/api/vip/punirunfollow', {}, config).then(function (response) {
+                axios.post(process.env.VUE_APP_HOST+'/api/vip/punirunfollow', {}, config).then(function (response) {
 
                     if (response.data.success) {
                         self.isVip = true;

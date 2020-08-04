@@ -11,7 +11,7 @@ export default {
       }
     };
 
-    axios.get('https://insta.brian.place/api/admin/tasksday', config).then((response) => {
+    axios.get(process.env.VUE_APP_HOST+'/api/admin/tasksday', config).then((response) => {
       this.renderChart({
         labels: response.data.labels,
         datasets: [
